@@ -11,22 +11,26 @@ from django.db import models
 class PlasmidsAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('plasmid_id',)
-	list_filter = ('plasmid_id','vectortype','supplier','lab',)
-	search_fields = ['plasmid_id','plasmid_name','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_anti_resistance','plasmid_growthstrains','plasmid_system','plasmid_reference','plasmid_seq_primers','plasmid_sequence',]
+	list_filter = ('plasmid_id','vectortype','anti_resistance','growthstrain','supplier','lab',)
+	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference',]
 	readonly_fields = ('plasmid_id',)
 
 	fieldsets = [
-		('Group1',{
+		('Plasmid',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_name','plasmid_promoter']
+			'fields': ['plasmid_name','vectortype','plasmid_mcs']
 		}),
-		('Group2',{
+		('Sequence information',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_transgene','plasmid_fluorchrome','plasmid_anti_resistance']
+			'fields': ['plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence']
 		}),
-		('Group3',{
+		('Growth in bacteria',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_growthstrains','plasmid_system','plasmid_reference','plasmid_seq_primers','plasmid_sequence','vectortype','supplier','lab']
+			'fields': ['anti_resistance','growthstrain','plasmid_temperature']
+		}),
+		('Where to get it',{
+			'classes': ('suit-tab suit-tab-plasmid',),
+			'fields': ['plasmid_reference','supplier','lab']
 		}),
 	]
 	suit_form_tabs = [

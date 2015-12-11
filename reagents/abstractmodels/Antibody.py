@@ -13,6 +13,8 @@ class AbstractAntibody(models.Model):
 	antibody_conjuged2 = models.CharField("Conjugated to", max_length=50)
 	antibody_reactivity = models.CharField("Reactivity", max_length=50)
 	antibody_reference = models.CharField("Reference", max_length=50)
+	antibody_description = models.CharField("Description", max_length=50, null=True,blank=True)
+	antibody_applications = models.CharField("Applications", max_length=50, null=True,blank=True)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
 
 	class Meta: abstract = True
@@ -58,6 +60,8 @@ class AbstractAntibody(AbstractAntibody):
 			getattr(self,'antibody_conjuged2')!=None and \
 			getattr(self,'antibody_reactivity')!=None and \
 			getattr(self,'antibody_reference')!=None and \
+			getattr(self,'antibody_description')!=None and \
+			getattr(self,'antibody_applications')!=None and \
 			getattr(self,'supplier')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True

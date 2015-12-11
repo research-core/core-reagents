@@ -10,6 +10,7 @@ class AbstractReagent(models.Model):
 	reagent_name = models.CharField("Name", max_length=50, unique=True)
 	reagent_reagent = models.CharField("Reagent", max_length=50)
 	reagent_purpose = models.TextField("Purpose", null=True,blank=True)
+	reagent_reference = models.CharField("Reference", max_length=50)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
 	lab = models.ForeignKey("Lab", verbose_name="Lab")
 
@@ -53,6 +54,7 @@ class AbstractReagent(AbstractReagent):
 		return getattr(self,'reagent_name')!=None and \
 			getattr(self,'reagent_reagent')!=None and \
 			getattr(self,'reagent_purpose')!=None and \
+			getattr(self,'reagent_reference')!=None and \
 			getattr(self,'supplier')!=None and \
 			getattr(self,'lab')!=None
 	is_complete.short_description="Complete"

@@ -12,13 +12,13 @@ class AntibodyAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('antibody_id',)
 	list_filter = ('antibody_id','supplier',)
-	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference',]
+	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications',]
 	readonly_fields = ('antibody_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-antibody',),
-			'fields': ['antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','supplier']
+			'fields': ['antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications','supplier']
 		}),
 	]
 	suit_form_tabs = [

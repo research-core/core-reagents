@@ -1,5 +1,5 @@
 
-from reagents.models import Reagent
+from reagents.models import AntibioticResistance
 from django.forms import Textarea, CheckboxSelectMultiple
 from django.forms.models import ModelMultipleChoiceField
 from django.utils.translation import ugettext as _
@@ -8,21 +8,21 @@ from django.conf import settings
 from django.db import models
 #from common.admintools import export_xlsx, printable_html
 
-class ReagentAdminAbstract(admin.ModelAdmin):
+class AntibioticResistanceAdminAbstract(admin.ModelAdmin):
 
+	list_display = ('antibioticresistance_id','antibioticresistance_name',)
 	
-	list_filter = ('supplier','lab',)
-	search_fields = ['reagent_name','reagent_reagent','reagent_purpose','reagent_reference',]
-	readonly_fields = ('reagent_id',)
+	search_fields = ['antibioticresistance_id','antibioticresistance_name',]
+	readonly_fields = ('antibioticresistance_id',)
 
 	fieldsets = [
 		('',{
-			'classes': ('suit-tab suit-tab-reagent',),
-			'fields': ['reagent_name','reagent_reagent','reagent_purpose','reagent_reference','supplier','lab']
+			'classes': ('suit-tab suit-tab-antibioticresistance',),
+			'fields': ['antibioticresistance_name']
 		}),
 	]
 	suit_form_tabs = [
-		(u'reagent', u'Reagent')
+		(u'antibioticresistance', u'Antibiotic Resistance')
 	]
 
 
@@ -37,12 +37,12 @@ class ReagentAdminAbstract(admin.ModelAdmin):
 
 	class Media:
 		css = dict(all=['generic.css','fixadmin.css'])
-		js = ('generic.js','models/reagent.js')
+		js = ('generic.js','models/antibioticresistance.js')
 
 	
 
 	def get_actions(self, request):
-		actions = super(ReagentAdminAbstract, self).get_actions(request)
+		actions = super(AntibioticResistanceAdminAbstract, self).get_actions(request)
 
 		user = request.user
 		#if not user.groups.filter(name=settings.HTML_EXPORTER_PROFILE_GROUP).exists(): del actions['printable_html']
@@ -50,7 +50,7 @@ class ReagentAdminAbstract(admin.ModelAdmin):
 		return actions
 			
 	def construct_change_message(self, request, form, formsets):
-		message = super(ReagentAdminAbstract, self).construct_change_message(request, form, formsets)
+		message = super(AntibioticResistanceAdminAbstract, self).construct_change_message(request, form, formsets)
 		change_message = []
 		if form.changed_data:
 			values = []

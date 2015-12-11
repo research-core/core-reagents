@@ -12,13 +12,13 @@ class EnzymeAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('enzyme_name',)
 	list_filter = ('ensyme_id','enzymetype','supplier','lab',)
-	search_fields = ['ensyme_id',]
+	search_fields = ['ensyme_id','enzyme_reference',]
 	readonly_fields = ('ensyme_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-enzyme',),
-			'fields': ['enzyme_name','enzymetype','supplier','lab']
+			'fields': ['enzyme_name','enzyme_description','enzyme_reference','enzymetype','supplier','lab']
 		}),
 	]
 	suit_form_tabs = [

@@ -12,13 +12,13 @@ class PrimerAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('primer_name',)
 	list_filter = ('primer_id','lab','supplier',)
-	search_fields = ['primer_id','primer_name','primer_sequence','primer_purpose',]
+	search_fields = ['primer_id','primer_name','primer_sequence','primer_purpose','primer_melting_temp',]
 	readonly_fields = ('primer_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-primer',),
-			'fields': ['primer_name','primer_sequence','primer_purpose','lab','supplier']
+			'fields': ['primer_name','primer_sequence','primer_purpose','primer_melting_temp','lab','supplier']
 		}),
 	]
 	suit_form_tabs = [

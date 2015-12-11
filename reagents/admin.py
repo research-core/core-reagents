@@ -79,3 +79,21 @@ class ReagentAdmin(ReagentAdminAbstract):
 	
 	##### auto:end:Reagent #####
 admin.site.register(Reagent, ReagentAdmin)
+##### auto:start:GrowthStrains #####
+from models import GrowthStrains
+from admins.GrowthStrainsAdmin import *
+
+class GrowthStrainsAdmin(GrowthStrainsAdminAbstract):
+	pass
+	
+	##### auto:end:GrowthStrains #####
+##### auto:start:AntibioticResistance #####
+from models import AntibioticResistance
+from admins.AntibioticResistanceAdmin import *
+
+class AntibioticResistanceAdmin(AntibioticResistanceAdminAbstract):
+	pass
+	
+	##### auto:end:AntibioticResistance #####
+admin.site.register(GrowthStrains, GrowthStrainsAdmin)
+admin.site.register(AntibioticResistance, AntibioticResistanceAdmin)

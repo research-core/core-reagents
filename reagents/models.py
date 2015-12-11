@@ -52,3 +52,15 @@ from abstractmodels.Reagent import AbstractReagent
 class Reagent(AbstractReagent):
 	pass
 	##### auto:end:Reagent #####
+##### auto:start:GrowthStrains #####
+from abstractmodels.GrowthStrains import AbstractGrowthStrains
+
+class GrowthStrains(AbstractGrowthStrains):
+	pass
+	##### auto:end:GrowthStrains #####
+##### auto:start:AntibioticResistance #####
+from abstractmodels.AntibioticResistance import AbstractAntibioticResistance
+
+class AntibioticResistance(AbstractAntibioticResistance):
+	pass
+	##### auto:end:AntibioticResistance #####

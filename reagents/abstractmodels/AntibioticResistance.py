@@ -5,27 +5,22 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 
-class AbstractPrimer(models.Model):
-	primer_id = models.AutoField("Primer id", primary_key=True)
-	primer_name = models.CharField("Name", max_length=50)
-	primer_sequence = models.CharField("Sequence (5'-3')", max_length=100)
-	primer_purpose = models.TextField("Purpose")
-	primer_melting_temp = models.DecimalField("Melting Temperature (C)", max_digits=3, decimal_places=2)
-	lab = models.ForeignKey("Lab", verbose_name="Lab")
-	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
+class AbstractAntibioticResistance(models.Model):
+	antibioticresistance_id = models.AutoField("Antibiotic resistance id", primary_key=True)
+	antibioticresistance_name = models.CharField("Antibiotic resistence name", max_length=100, unique=True)
 
 	class Meta: abstract = True
 
 
-class AbstractPrimer(AbstractPrimer):
+class AbstractAntibioticResistance(AbstractAntibioticResistance):
 	
-	def __unicode__(self): return str(self.primer_name)
+	def __unicode__(self): return str(self.antibioticresistance_name)
 
 
 	class Meta:
 		abstract = True
-		verbose_name = "Primer"
-		verbose_name_plural = "Primers"
+		verbose_name = "Antibiotic resistance"
+		verbose_name_plural = "Antibiotic Resistances"
 
 	def ShowHideIf(self, checkingField, rules):
 		values, listOfFields = rules
@@ -51,12 +46,7 @@ class AbstractPrimer(AbstractPrimer):
 		return True
 				
 	def is_complete(self):
-		return getattr(self,'primer_name')!=None and \
-			getattr(self,'primer_sequence')!=None and \
-			getattr(self,'primer_purpose')!=None and \
-			getattr(self,'primer_melting_temp')!=None and \
-			getattr(self,'lab')!=None and \
-			getattr(self,'supplier')!=None
+		return getattr(self,'antibioticresistance_name')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True
 			
