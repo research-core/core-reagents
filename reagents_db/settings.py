@@ -126,7 +126,7 @@ STATICFILES_DIRS = (
 )
 
 SUIT_CONFIG= {
-    'MENU_EXCLUDE': ('reagents.enzymetype','reagents.growthstrains','reagents.vectortype',),
+    'MENU_EXCLUDE': ('reagents.enzymetype','reagents.growthstrains','reagents.vectortype','reagents.antibioticresistance', 'reagents.lab', 'reagents.supplier',),
 }
 
 

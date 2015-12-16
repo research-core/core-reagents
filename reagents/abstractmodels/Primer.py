@@ -10,7 +10,7 @@ class AbstractPrimer(models.Model):
 	primer_name = models.CharField("Name", max_length=50)
 	primer_sequence = models.CharField("Sequence (5'-3')", max_length=100)
 	primer_purpose = models.TextField("Purpose")
-	primer_melting_temp = models.DecimalField("Melting Temperature (C)", max_digits=3, decimal_places=2)
+	primer_melting_temp = models.IntegerField("Melting Temperature (C)", max_length=3)
 	lab = models.ForeignKey("Lab", verbose_name="Lab")
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
 

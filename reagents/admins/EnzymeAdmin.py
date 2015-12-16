@@ -10,7 +10,7 @@ from django.db import models
 
 class EnzymeAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('enzyme_name',)
+	list_display = ('enzyme_name','enzymetype',)
 	list_filter = ('ensyme_id','enzymetype','supplier','lab',)
 	search_fields = ['ensyme_id','enzyme_reference',]
 	readonly_fields = ('ensyme_id',)

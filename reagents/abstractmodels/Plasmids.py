@@ -9,7 +9,7 @@ class AbstractPlasmid(models.Model):
 	plasmid_id = models.AutoField("Plasmid id", primary_key=True)
 	plasmid_name = models.CharField("Plasmid name", max_length=50)
 	vectortype = models.ForeignKey("VectorType", verbose_name="Vector type")
-	plasmid_mcs = models.BooleanField("Multiple Cloning Site (MCS)")
+	plasmid_mcs = models.BooleanField("Multiple Cloning Site (MCS)", default=False)
 
 	class Meta: abstract = True
 
@@ -32,7 +32,7 @@ class AbstractSequenceInformation(models.Model):
 class AbstractGrowthinBacteria(models.Model):
 	anti_resistance = models.ForeignKey("AntibioticResistance", verbose_name="Antibiotic resistance")
 	growthstrain = models.ForeignKey("GrowthStrains", verbose_name="Growth strain", null=True,blank=True)
-	plasmid_temperature = models.DecimalField("Temperature (C)", max_digits=3, decimal_places=2)
+	plasmid_temperature = models.IntegerField("Temperature (C)", max_length=3)
 
 	class Meta: abstract = True
 

@@ -10,8 +10,8 @@ from django.db import models
 
 class PlasmidsAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('plasmid_id',)
-	list_filter = ('plasmid_id','vectortype','anti_resistance','growthstrain','supplier','lab',)
+	list_display = ('plasmid_name','vectortype',)
+	list_filter = ('plasmid_id','plasmid_name','vectortype','anti_resistance','growthstrain','supplier','lab',)
 	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference',]
 	readonly_fields = ('plasmid_id',)
 

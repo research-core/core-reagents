@@ -10,7 +10,7 @@ from django.db import models
 
 class LabAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('lab_id','lab_name',)
+	list_display = ('lab_name',)
 	
 	search_fields = ['lab_name',]
 	readonly_fields = ('lab_id',)
