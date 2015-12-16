@@ -69,8 +69,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reagents',
-        'USER': 'root',
-        'PASSWORD': '123',
+        'USER': 'reagents',
+        'PASSWORD': 'reagents123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -130,7 +130,7 @@ SUIT_CONFIG= {
 }
 
 
-BASE_URL = 'http://cnp-intranet.champalimaud.pt'
+BASE_URL = 'http://cnp-intranet.champalimaud.pt:8383'
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_ADAPTER = "cfauth.CFAccountAdapter.CFSocialAccountAdapter"
