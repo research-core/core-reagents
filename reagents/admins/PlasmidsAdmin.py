@@ -12,13 +12,13 @@ class PlasmidsAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('plasmid_name','vectortype',)
 	list_filter = ('plasmid_id','plasmid_name','vectortype','anti_resistance','growthstrain','supplier','lab',)
-	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference',]
+	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_sc_enzymes','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference',]
 	readonly_fields = ('plasmid_id',)
 
 	fieldsets = [
 		('Plasmid',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_name','vectortype','plasmid_mcs']
+			'fields': ['plasmid_name','vectortype','plasmid_mcs','plasmid_sc_enzymes']
 		}),
 		('Sequence information',{
 			'classes': ('suit-tab suit-tab-plasmid',),

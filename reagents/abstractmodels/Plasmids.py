@@ -10,6 +10,7 @@ class AbstractPlasmid(models.Model):
 	plasmid_name = models.CharField("Plasmid name", max_length=50)
 	vectortype = models.ForeignKey("VectorType", verbose_name="Vector type")
 	plasmid_mcs = models.BooleanField("Multiple Cloning Site (MCS)", default=False)
+	plasmid_sc_enzymes = models.TextField("Single cutting enzymes", null=True,blank=True)
 
 	class Meta: abstract = True
 
@@ -75,9 +76,11 @@ class AbstractPlasmids(AbstractPlasmid,
 		return True
 				
 	def is_complete(self):
-		return getattr(self,'plasmid_name')!=None and \
+		return self.ShowHideIf('plasmid_mcs','on;', ['plasmid_sc_enzymes']) and \
+			getattr(self,'plasmid_name')!=None and \
 			getattr(self,'vectortype')!=None and \
 			getattr(self,'plasmid_mcs')!=None and \
+			getattr(self,'plasmid_sc_enzymes')!=None and \
 			getattr(self,'plasmid_promoter')!=None and \
 			getattr(self,'plasmid_transgene')!=None and \
 			getattr(self,'plasmid_fluorchrome')!=None and \
