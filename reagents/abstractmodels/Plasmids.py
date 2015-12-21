@@ -25,7 +25,8 @@ class AbstractSequenceInformation(models.Model):
 	plasmid_transgene = models.CharField("Transgene", max_length=50)
 	plasmid_fluorchrome = models.CharField("Fluorchrome", max_length=50)
 	plasmid_seq_primers = models.CharField("Sequencing primers", max_length=50)
-	plasmid_sequence = models.FileField("Sequence", max_length=255, upload_to='uploads/abstractsequenceinformation')
+	plasmid_sequence = models.FileField("Sequence 1", max_length=255, upload_to='uploads/abstractsequenceinformation')
+	plasmid_sequence2 = models.FileField("Sequence 2", max_length=255, upload_to='uploads/abstractsequenceinformation', null=True,blank=True)
 
 	class Meta: abstract = True
 
@@ -82,6 +83,7 @@ class AbstractPlasmids(AbstractPlasmid,
 			getattr(self,'plasmid_fluorchrome')!=None and \
 			getattr(self,'plasmid_seq_primers')!=None and \
 			getattr(self,'plasmid_sequence')!=None and \
+			getattr(self,'plasmid_sequence2')!=None and \
 			getattr(self,'anti_resistance')!=None and \
 			getattr(self,'growthstrain')!=None and \
 			getattr(self,'plasmid_temperature')!=None and \

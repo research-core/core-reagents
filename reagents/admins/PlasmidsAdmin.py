@@ -22,7 +22,7 @@ class PlasmidsAdminAbstract(admin.ModelAdmin):
 		}),
 		('Sequence information',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence']
+			'fields': ['plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_sequence2']
 		}),
 		('Growth in bacteria',{
 			'classes': ('suit-tab suit-tab-plasmid',),

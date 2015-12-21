@@ -15,6 +15,10 @@ $: gsheet2django 1FXhRND7HAgtGgicinPEjvEGMtVt9KIZo0T8W_9JtOdU
 $: python manage.py makemigrations reagents
 $: python manage.py migrate
 
+Running
+# Add reagents.local to hostnames first!
+$: python manage.py runserver reagents.local:8383
+
 Packaging
 $: python setup.py sdist --formats=zip
 
