@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 
@@ -14,7 +15,7 @@ class AbstractSupplierinfo(models.Model):
 
 class AbstractSupplier(AbstractSupplierinfo):
 	
-	def __unicode__(self): return str(self.supplier_name)
+	def __unicode__(self): return force_text(self.supplier_name)
 
 
 	class Meta:

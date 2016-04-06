@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 BOOLEAN = (
@@ -74,7 +75,7 @@ class AbstractPlasmids(AbstractPlasmid,
 	AbstractSequenceInformation,
 	AbstractGrowthinBacteria):
 	
-	def __unicode__(self): return str(self.plasmid_name)
+	def __unicode__(self): return force_text(self.plasmid_name)
 
 
 	class Meta:
@@ -107,8 +108,8 @@ class AbstractPlasmids(AbstractPlasmid,
 				
 	def is_complete(self):
 		return self.ShowHideIf('plasmid_gateway','TRUE;', ['plasmid_vector']) and \
-			self.ShowHideIf('vectortype','7;8', ['plasmid_system', 'plasmid_flippases', 'plasmid_attb', 'plasmid_marker']) and \
 			self.ShowHideIf('plasmid_mcs','on;', ['plasmid_sc_enzymes']) and \
+			self.ShowHideIf('vectortype','6;8', ['plasmid_system', 'plasmid_flippases', 'plasmid_attb', 'plasmid_marker']) and \
 			getattr(self,'plasmid_name')!=None and \
 			getattr(self,'vectortype')!=None and \
 			getattr(self,'plasmid_mcs')!=None and \

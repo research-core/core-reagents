@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 
@@ -12,22 +13,22 @@ class AbstractAntibody(models.Model):
 	antibody_prim_sec = models.CharField("Primary/Secondary", max_length=50)
 	antibody_conjuged2 = models.CharField("Conjugated to", max_length=50)
 	antibody_reactivity = models.CharField("Reactivity", max_length=50)
-	antibody_reference = models.CharField("Reference", max_length=50)
 	antibody_description = models.CharField("Description", max_length=50, null=True,blank=True)
+	antibody_source = models.CharField("Source", max_length=100, null=True,blank=True)
+	antibody_ig_class = models.CharField("Ig class", max_length=50, null=True,blank=True)
 	antibody_applications = models.CharField("Applications", max_length=50, null=True,blank=True)
+	antibody_working_concentration = models.CharField("Working concentration", max_length=50, null=True,blank=True)
+	antibody_reference = models.CharField("Reference", max_length=50)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
 	contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
-	antibody_working_concentration = models.TextField("Working concentration", null=True,blank=True)
 	antibody_notes = models.TextField("Notes", null=True,blank=True)
-	antibody_source = models.TextField("Source", null=True,blank=True)
-	antibody_ig_class = models.TextField("Ig class", null=True,blank=True)
 
 	class Meta: abstract = True
 
 
 class AbstractAntibody(AbstractAntibody):
 	
-	def __unicode__(self): return str(self.antibody_name)
+	def __unicode__(self): return force_text(self.antibody_name)
 
 
 	class Meta:
@@ -64,15 +65,15 @@ class AbstractAntibody(AbstractAntibody):
 			getattr(self,'antibody_prim_sec')!=None and \
 			getattr(self,'antibody_conjuged2')!=None and \
 			getattr(self,'antibody_reactivity')!=None and \
-			getattr(self,'antibody_reference')!=None and \
 			getattr(self,'antibody_description')!=None and \
+			getattr(self,'antibody_source')!=None and \
+			getattr(self,'antibody_ig_class')!=None and \
 			getattr(self,'antibody_applications')!=None and \
+			getattr(self,'antibody_working_concentration')!=None and \
+			getattr(self,'antibody_reference')!=None and \
 			getattr(self,'supplier')!=None and \
 			getattr(self,'contact')!=None and \
-			getattr(self,'antibody_working_concentration')!=None and \
-			getattr(self,'antibody_notes')!=None and \
-			getattr(self,'antibody_source')!=None and \
-			getattr(self,'antibody_ig_class')!=None
+			getattr(self,'antibody_notes')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True
 			

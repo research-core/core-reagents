@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 
@@ -14,7 +15,7 @@ class AbstractGrowthstrain(models.Model):
 
 class AbstractGrowthStrains(AbstractGrowthstrain):
 	
-	def __unicode__(self): return str(self.growthstrain_name)
+	def __unicode__(self): return force_text(self.growthstrain_name)
 
 
 	class Meta:

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 
@@ -20,7 +21,7 @@ class AbstractChemical(models.Model):
 
 class AbstractChemical(AbstractChemical):
 	
-	def __unicode__(self): return str(self.chemical_name)
+	def __unicode__(self): return force_text(self.chemical_name)
 
 
 	class Meta:

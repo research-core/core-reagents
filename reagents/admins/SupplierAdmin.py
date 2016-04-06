@@ -49,21 +49,21 @@ class SupplierAdminAbstract(admin.ModelAdmin):
 		#if not user.groups.filter(name=settings.EXCEL_EXPORTER_PROFILE_GROUP).exists(): del actions['export_xlsx']
 		return actions
 			
-	def construct_change_message(self, request, form, formsets):
+	def construct_change_message(self, request, form, formsets, add=False):
 		message = super(SupplierAdminAbstract, self).construct_change_message(request, form, formsets)
 		change_message = []
 		if form.changed_data:
 			values = []
 			for x in form.changed_data:
 				field   = form.fields[x]
-				initial = form.initial[x]
+				initial = form.initial.get(x,None)				
 				value 	= form.cleaned_data[x]
 				if isinstance(field, ModelMultipleChoiceField): 
 					value 	= [int(y.pk) for y in value]
-					initial = [int(y) for y in initial]
+					initial = [int(y) for y in initial] if initial!=None else []
 
-				values.append( _("<b>%s</b>: <span style='color:#4682B4' >%s</span> -> <span style='color:#00A600' >%s</span>" % (x, str(initial), str(value)) ) )
-			change_message.append( '<ul><li>%s</li></ul>' % '</li><li>'.join(values) )
+				values.append( _(": %s -> %s" % (str(initial), str(value)) ) )
+			change_message.append( '%s' % ','.join(values) )
 			message += ' '.join(change_message)
 		return message
 

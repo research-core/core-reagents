@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 
@@ -20,7 +21,7 @@ class AbstractPrimer(models.Model):
 
 class AbstractPrimer(AbstractPrimer):
 	
-	def __unicode__(self): return str(self.primer_name)
+	def __unicode__(self): return force_text(self.primer_name)
 
 
 	class Meta:

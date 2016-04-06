@@ -11,7 +11,7 @@ from django.db import models
 class PlasmidsAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('plasmid_name','vectortype','contact',)
-	list_filter = ('plasmid_id','plasmid_name','vectortype','plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','anti_resistance','growthstrain','supplier','lab',)
+	list_filter = ('plasmid_name','vectortype','plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','anti_resistance','growthstrain','supplier','lab',)
 	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_sc_enzymes','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference','contact',]
 	readonly_fields = ('plasmid_id',)
 
@@ -68,21 +68,21 @@ class PlasmidsAdminAbstract(admin.ModelAdmin):
 		#if not user.groups.filter(name=settings.EXCEL_EXPORTER_PROFILE_GROUP).exists(): del actions['export_xlsx']
 		return actions
 			
-	def construct_change_message(self, request, form, formsets):
+	def construct_change_message(self, request, form, formsets, add=False):
 		message = super(PlasmidsAdminAbstract, self).construct_change_message(request, form, formsets)
 		change_message = []
 		if form.changed_data:
 			values = []
 			for x in form.changed_data:
 				field   = form.fields[x]
-				initial = form.initial[x]
+				initial = form.initial.get(x,None)				
 				value 	= form.cleaned_data[x]
 				if isinstance(field, ModelMultipleChoiceField): 
 					value 	= [int(y.pk) for y in value]
-					initial = [int(y) for y in initial]
+					initial = [int(y) for y in initial] if initial!=None else []
 
-				values.append( _("<b>%s</b>: <span style='color:#4682B4' >%s</span> -> <span style='color:#00A600' >%s</span>" % (x, str(initial), str(value)) ) )
-			change_message.append( '<ul><li>%s</li></ul>' % '</li><li>'.join(values) )
+				values.append( _(": %s -> %s" % (str(initial), str(value)) ) )
+			change_message.append( '%s' % ','.join(values) )
 			message += ' '.join(change_message)
 		return message
 

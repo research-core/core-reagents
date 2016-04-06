@@ -12,13 +12,13 @@ class AntibodyAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('antibody_name','antibody_target','contact',)
 	list_filter = ('antibody_id','supplier',)
-	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications','contact',]
+	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_description','antibody_applications','antibody_reference','contact',]
 	readonly_fields = ('antibody_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-antibody',),
-			'fields': ['antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications','supplier','contact','antibody_working_concentration','antibody_notes','antibody_source','antibody_ig_class']
+			'fields': ['antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_description','antibody_source','antibody_ig_class','antibody_applications','antibody_working_concentration','antibody_reference','supplier','contact','antibody_notes']
 		}),
 	]
 	suit_form_tabs = [
@@ -49,21 +49,21 @@ class AntibodyAdminAbstract(admin.ModelAdmin):
 		#if not user.groups.filter(name=settings.EXCEL_EXPORTER_PROFILE_GROUP).exists(): del actions['export_xlsx']
 		return actions
 			
-	def construct_change_message(self, request, form, formsets):
+	def construct_change_message(self, request, form, formsets, add=False):
 		message = super(AntibodyAdminAbstract, self).construct_change_message(request, form, formsets)
 		change_message = []
 		if form.changed_data:
 			values = []
 			for x in form.changed_data:
 				field   = form.fields[x]
-				initial = form.initial[x]
+				initial = form.initial.get(x,None)				
 				value 	= form.cleaned_data[x]
 				if isinstance(field, ModelMultipleChoiceField): 
 					value 	= [int(y.pk) for y in value]
-					initial = [int(y) for y in initial]
+					initial = [int(y) for y in initial] if initial!=None else []
 
-				values.append( _("<b>%s</b>: <span style='color:#4682B4' >%s</span> -> <span style='color:#00A600' >%s</span>" % (x, str(initial), str(value)) ) )
-			change_message.append( '<ul><li>%s</li></ul>' % '</li><li>'.join(values) )
+				values.append( _(": %s -> %s" % (str(initial), str(value)) ) )
+			change_message.append( '%s' % ','.join(values) )
 			message += ' '.join(change_message)
 		return message
 

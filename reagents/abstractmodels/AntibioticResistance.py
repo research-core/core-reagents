@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
 
 
@@ -14,7 +15,7 @@ class AbstractAntibioticresistance(models.Model):
 
 class AbstractAntibioticResistance(AbstractAntibioticresistance):
 	
-	def __unicode__(self): return str(self.antibioticresistance_name)
+	def __unicode__(self): return force_text(self.antibioticresistance_name)
 
 
 	class Meta:
