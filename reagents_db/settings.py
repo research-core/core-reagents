@@ -69,8 +69,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'reagents',
-        'USER': 'reagents',
-        'PASSWORD': 'reagents123',
+        'USER': 'root',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -124,10 +124,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static', "css"),
     os.path.join(BASE_DIR,'static', "js"),
 )
-
-SUIT_CONFIG= {
-    'MENU_EXCLUDE': ('reagents.enzymetype','reagents.growthstrains','reagents.vectortype','reagents.antibioticresistance', 'reagents.lab', 'reagents.supplier',),
-}
 
 
 BASE_URL = 'http://cnp-intranet.champalimaud.pt:8383'

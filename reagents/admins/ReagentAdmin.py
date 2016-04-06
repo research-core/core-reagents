@@ -1,5 +1,5 @@
 
-from reagents.models import Primer
+from reagents.models import Reagent
 from django.forms import Textarea, CheckboxSelectMultiple
 from django.forms.models import ModelMultipleChoiceField
 from django.utils.translation import ugettext as _
@@ -8,21 +8,21 @@ from django.conf import settings
 from django.db import models
 #from common.admintools import export_xlsx, printable_html
 
-class PrimerAdminAbstract(admin.ModelAdmin):
+class ReagentAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('primer_name','primer_sequence','contact',)
-	list_filter = ('primer_id','lab','supplier',)
-	search_fields = ['primer_id','primer_name','primer_sequence','primer_purpose','primer_melting_temp','contact',]
-	readonly_fields = ('primer_id',)
+	
+	list_filter = ('supplier','lab',)
+	search_fields = ['reagent_name','reagent_reagent','reagent_purpose',]
+	readonly_fields = ('reagent_id',)
 
 	fieldsets = [
 		('',{
-			'classes': ('suit-tab suit-tab-primer',),
-			'fields': ['primer_name','primer_sequence','primer_purpose','primer_melting_temp','lab','supplier','contact']
+			'classes': ('suit-tab suit-tab-reagent',),
+			'fields': ['reagent_name','reagent_reagent','reagent_purpose','supplier','lab']
 		}),
 	]
 	suit_form_tabs = [
-		(u'primer', u'Primer')
+		(u'reagent', u'Reagent')
 	]
 
 
@@ -37,12 +37,12 @@ class PrimerAdminAbstract(admin.ModelAdmin):
 
 	class Media:
 		css = dict(all=['generic.css','fixadmin.css'])
-		js = ('generic.js','models/primer.js')
+		js = ('generic.js','models/reagent.js')
 
 	
 
 	def get_actions(self, request):
-		actions = super(PrimerAdminAbstract, self).get_actions(request)
+		actions = super(ReagentAdminAbstract, self).get_actions(request)
 
 		user = request.user
 		#if not user.groups.filter(name=settings.HTML_EXPORTER_PROFILE_GROUP).exists(): del actions['printable_html']
@@ -50,7 +50,7 @@ class PrimerAdminAbstract(admin.ModelAdmin):
 		return actions
 			
 	def construct_change_message(self, request, form, formsets):
-		message = super(PrimerAdminAbstract, self).construct_change_message(request, form, formsets)
+		message = super(ReagentAdminAbstract, self).construct_change_message(request, form, formsets)
 		change_message = []
 		if form.changed_data:
 			values = []

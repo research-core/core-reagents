@@ -5,26 +5,26 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 
-class AbstractEnzyme(models.Model):
-	ensyme_id = models.AutoField("Enzyme id", primary_key=True)
-	enzyme_name = models.CharField("Name", max_length=50)
-	enzyme_description = models.TextField("Description", null=True,blank=True)
-	enzyme_reference = models.CharField("Reference", max_length=50)
-	enzymetype = models.ForeignKey("EnzymeType", verbose_name="Type of enzyme")
+class AbstractReagent(models.Model):
+	reagent_id = models.AutoField("Reagent id", primary_key=True)
+	reagent_name = models.CharField("Name", max_length=50, unique=True)
+	reagent_reagent = models.CharField("Reagent", max_length=50)
+	reagent_purpose = models.TextField("Purpose", null=True,blank=True)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
 	lab = models.ForeignKey("Lab", verbose_name="Lab")
-	contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
 
 	class Meta: abstract = True
 
 
-class AbstractEnzyme(AbstractEnzyme):
+class AbstractReagent(AbstractReagent):
 	
+	def __unicode__(self): return str(self.reagent_name)
+
 
 	class Meta:
 		abstract = True
-		verbose_name = "Enzyme"
-		verbose_name_plural = "Enzymes"
+		verbose_name = "Reagent"
+		verbose_name_plural = "Reagents"
 
 	def ShowHideIf(self, checkingField, rules):
 		values, listOfFields = rules
@@ -50,13 +50,11 @@ class AbstractEnzyme(AbstractEnzyme):
 		return True
 				
 	def is_complete(self):
-		return getattr(self,'enzyme_name')!=None and \
-			getattr(self,'enzyme_description')!=None and \
-			getattr(self,'enzyme_reference')!=None and \
-			getattr(self,'enzymetype')!=None and \
+		return getattr(self,'reagent_name')!=None and \
+			getattr(self,'reagent_reagent')!=None and \
+			getattr(self,'reagent_purpose')!=None and \
 			getattr(self,'supplier')!=None and \
-			getattr(self,'lab')!=None and \
-			getattr(self,'contact')!=None
+			getattr(self,'lab')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True
 			

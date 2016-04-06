@@ -5,14 +5,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 
-class AbstractAntibioticResistance(models.Model):
+class AbstractAntibioticresistance(models.Model):
 	antibioticresistance_id = models.AutoField("Antibiotic resistance id", primary_key=True)
 	antibioticresistance_name = models.CharField("Antibiotic resistence name", max_length=100, unique=True)
 
 	class Meta: abstract = True
 
 
-class AbstractAntibioticResistance(AbstractAntibioticResistance):
+class AbstractAntibioticResistance(AbstractAntibioticresistance):
 	
 	def __unicode__(self): return str(self.antibioticresistance_name)
 

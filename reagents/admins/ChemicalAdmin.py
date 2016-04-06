@@ -10,15 +10,15 @@ from django.db import models
 
 class ChemicalAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('chemical_name','chemical_formula',)
+	list_display = ('chemical_name','chemical_formula','contact',)
 	list_filter = ('supplier','lab',)
-	search_fields = ['chemical_name','chemical_formula','chemical_purpose','chemical_reference',]
+	search_fields = ['chemical_name','chemical_formula','chemical_purpose','chemical_reference','contact',]
 	readonly_fields = ('chemical_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-chemical',),
-			'fields': ['chemical_name','chemical_formula','chemical_purpose','chemical_reference','supplier','lab']
+			'fields': ['chemical_name','chemical_formula','chemical_purpose','chemical_reference','supplier','lab','contact']
 		}),
 	]
 	suit_form_tabs = [

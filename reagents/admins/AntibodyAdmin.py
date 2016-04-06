@@ -10,15 +10,15 @@ from django.db import models
 
 class AntibodyAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('antibody_name','antibody_target',)
+	list_display = ('antibody_name','antibody_target','contact',)
 	list_filter = ('antibody_id','supplier',)
-	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications',]
+	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications','contact',]
 	readonly_fields = ('antibody_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-antibody',),
-			'fields': ['antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications','supplier']
+			'fields': ['antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_reference','antibody_description','antibody_applications','supplier','contact','antibody_working_concentration','antibody_notes','antibody_source','antibody_ig_class']
 		}),
 	]
 	suit_form_tabs = [

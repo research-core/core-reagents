@@ -34,8 +34,20 @@ function ShowHideIf(checkingfield, values, elements, allrow){
 	    });
 	});
 
+	$("select[name="+checkingfield+"]").on("change", function() {
+		$("select[name="+checkingfield+"]").each(function(){
+			var value = $(this).find(":selected").val();
+			if( $.inArray(value, values)>=0){
+				$(selector).show();
+				return false;
+			}else{
+				$(selector).hide();
+			}
+	    });
+	});
+
 	var should_show = false;
-	$("input:radio[name="+checkingfield+"]:checked, input:checkbox[name="+checkingfield+"]:checked").each(function() {
+	$("input:radio[name="+checkingfield+"]:checked, input:checkbox[name="+checkingfield+"]:checked, select[name="+checkingfield+"] option:selected").each(function() {
 	    var value = $(this).val();
         if( $.inArray(value, values)>=0 ) should_show = true;
 	});

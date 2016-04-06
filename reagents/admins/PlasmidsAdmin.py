@@ -10,27 +10,27 @@ from django.db import models
 
 class PlasmidsAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('plasmid_name','vectortype',)
-	list_filter = ('plasmid_id','plasmid_name','vectortype','anti_resistance','growthstrain','supplier','lab',)
-	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_sc_enzymes','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference',]
+	list_display = ('plasmid_name','vectortype','contact',)
+	list_filter = ('plasmid_id','plasmid_name','vectortype','plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','anti_resistance','growthstrain','supplier','lab',)
+	search_fields = ['plasmid_id','plasmid_name','plasmid_mcs','plasmid_sc_enzymes','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_temperature','plasmid_reference','contact',]
 	readonly_fields = ('plasmid_id',)
 
 	fieldsets = [
 		('Plasmid',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_name','vectortype','plasmid_mcs','plasmid_sc_enzymes']
+			'fields': ['plasmid_name','vectortype','plasmid_mcs','plasmid_sc_enzymes','plasmid_backbone','plasmid_gateway','plasmid_vector']
 		}),
 		('Sequence information',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_sequence2']
+			'fields': ['plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_sequence2']
 		}),
 		('Growth in bacteria',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['anti_resistance','growthstrain','plasmid_temperature']
+			'fields': ['anti_resistance','growthstrain','plasmid_temperature','plasmid_methylation']
 		}),
 		('Where to get it',{
 			'classes': ('suit-tab suit-tab-plasmid',),
-			'fields': ['plasmid_reference','supplier','lab']
+			'fields': ['plasmid_reference','supplier','lab','contact']
 		}),
 	]
 	suit_form_tabs = [
@@ -38,7 +38,14 @@ class PlasmidsAdminAbstract(admin.ModelAdmin):
 	]
 
 
-	
+	radio_fields = {
+		'plasmid_gateway': admin.VERTICAL,
+		'plasmid_vector': admin.HORIZONTAL,
+		'plasmid_system': admin.HORIZONTAL,
+		'plasmid_flippases': admin.HORIZONTAL,
+		'plasmid_attb': admin.HORIZONTAL,
+		'plasmid_marker': admin.HORIZONTAL
+	}
 
 	#actions = [export_xlsx,]
 				

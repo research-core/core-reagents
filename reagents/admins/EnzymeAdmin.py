@@ -10,15 +10,15 @@ from django.db import models
 
 class EnzymeAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('enzyme_name','enzymetype',)
+	list_display = ('enzyme_name','enzymetype','contact',)
 	list_filter = ('ensyme_id','enzymetype','supplier','lab',)
-	search_fields = ['ensyme_id','enzyme_reference',]
+	search_fields = ['ensyme_id','enzyme_reference','contact',]
 	readonly_fields = ('ensyme_id',)
 
 	fieldsets = [
 		('',{
 			'classes': ('suit-tab suit-tab-enzyme',),
-			'fields': ['enzyme_name','enzyme_description','enzyme_reference','enzymetype','supplier','lab']
+			'fields': ['enzyme_name','enzyme_description','enzyme_reference','enzymetype','supplier','lab','contact']
 		}),
 	]
 	suit_form_tabs = [

@@ -13,6 +13,7 @@ class AbstractChemical(models.Model):
 	chemical_reference = models.CharField("Reference", max_length=50)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
 	lab = models.ForeignKey("Lab", verbose_name="Lab")
+	contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
 
 	class Meta: abstract = True
 
@@ -56,7 +57,8 @@ class AbstractChemical(AbstractChemical):
 			getattr(self,'chemical_purpose')!=None and \
 			getattr(self,'chemical_reference')!=None and \
 			getattr(self,'supplier')!=None and \
-			getattr(self,'lab')!=None
+			getattr(self,'lab')!=None and \
+			getattr(self,'contact')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True
 			

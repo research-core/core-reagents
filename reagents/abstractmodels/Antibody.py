@@ -16,6 +16,11 @@ class AbstractAntibody(models.Model):
 	antibody_description = models.CharField("Description", max_length=50, null=True,blank=True)
 	antibody_applications = models.CharField("Applications", max_length=50, null=True,blank=True)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
+	contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
+	antibody_working_concentration = models.TextField("Working concentration", null=True,blank=True)
+	antibody_notes = models.TextField("Notes", null=True,blank=True)
+	antibody_source = models.TextField("Source", null=True,blank=True)
+	antibody_ig_class = models.TextField("Ig class", null=True,blank=True)
 
 	class Meta: abstract = True
 
@@ -62,7 +67,12 @@ class AbstractAntibody(AbstractAntibody):
 			getattr(self,'antibody_reference')!=None and \
 			getattr(self,'antibody_description')!=None and \
 			getattr(self,'antibody_applications')!=None and \
-			getattr(self,'supplier')!=None
+			getattr(self,'supplier')!=None and \
+			getattr(self,'contact')!=None and \
+			getattr(self,'antibody_working_concentration')!=None and \
+			getattr(self,'antibody_notes')!=None and \
+			getattr(self,'antibody_source')!=None and \
+			getattr(self,'antibody_ig_class')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True
 			

@@ -70,6 +70,23 @@ class LabAdmin(LabAdminAbstract):
 	
 	##### auto:end:Lab #####
 admin.site.register(Lab, LabAdmin)
+##### auto:start:Reagent #####
+from models import Reagent
+from admins.ReagentAdmin import *
+
+class ReagentAdmin(ReagentAdminAbstract):
+	pass
+	
+	##### auto:end:Reagent #####
+admin.site.register(Reagent, ReagentAdmin)
+##### auto:start:Chemical #####
+from models import Chemical
+from admins.ChemicalAdmin import *
+
+class ChemicalAdmin(ChemicalAdminAbstract):
+	pass
+	
+	##### auto:end:Chemical #####
 ##### auto:start:GrowthStrains #####
 from models import GrowthStrains
 from admins.GrowthStrainsAdmin import *
@@ -86,14 +103,6 @@ class AntibioticResistanceAdmin(AntibioticResistanceAdminAbstract):
 	pass
 	
 	##### auto:end:AntibioticResistance #####
+admin.site.register(Chemical, ChemicalAdmin)
 admin.site.register(GrowthStrains, GrowthStrainsAdmin)
 admin.site.register(AntibioticResistance, AntibioticResistanceAdmin)
-##### auto:start:Chemical #####
-from models import Chemical
-from admins.ChemicalAdmin import *
-
-class ChemicalAdmin(ChemicalAdminAbstract):
-	pass
-	
-	##### auto:end:Chemical #####
-admin.site.register(Chemical, ChemicalAdmin)

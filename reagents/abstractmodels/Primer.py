@@ -13,6 +13,7 @@ class AbstractPrimer(models.Model):
 	primer_melting_temp = models.IntegerField("Melting Temperature (C)", max_length=3)
 	lab = models.ForeignKey("Lab", verbose_name="Lab")
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
+	contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
 
 	class Meta: abstract = True
 
@@ -56,7 +57,8 @@ class AbstractPrimer(AbstractPrimer):
 			getattr(self,'primer_purpose')!=None and \
 			getattr(self,'primer_melting_temp')!=None and \
 			getattr(self,'lab')!=None and \
-			getattr(self,'supplier')!=None
+			getattr(self,'supplier')!=None and \
+			getattr(self,'contact')!=None
 	is_complete.short_description="Complete"
 	is_complete.boolean = True
 			
