@@ -130,13 +130,17 @@ BASE_URL = 'http://cnp-intranet.champalimaud.pt:8383'
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_ADAPTER = "cfauth.CFAccountAdapter.CFSocialAccountAdapter"
-ACCOUNT_ADAPTER = "cfauth.CFAccountAdapter.CFAccountAdapter"
-ACCOUNT_EMAIL_REQUIRED = False
-SOCIALACCOUNT_AUTO_SIGNUP = True
+ACCOUNT_ADAPTER              = "cfauth.CFAccountAdapter.CFAccountAdapter"
+ACCOUNT_EMAIL_REQUIRED       = True
+SOCIALACCOUNT_AUTO_SIGNUP    = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 SITE_ID = 1
 
 
-EXCEL_EXPORTER_PROFILE_GROUP            = 'Profile: Export to excel'
-MANAGER_PROFILE_GROUP                   = 'Profile: Manager/Admin'
-GUEST_PROFILE_GROUP                     = 'Profile: Guest'
+PROFILE_GUEST = 'PROFILE: Guest'
+
+
+
+try:
+    exec( open( "/etc/swpprjs/reagents.cfg" ).read() )
+except: pass

@@ -33,7 +33,7 @@ class CFSocialAccountAdapter(DefaultSocialAccountAdapter):
                 u = super(CFSocialAccountAdapter,self).save_user(request, sociallogin, form)
             except:
                 u = User.objects.get(email=email)
-            u.username = email.replace('@neuro.fchampalimaud.org', '')
+            u.username = email.replace('@neuro.fchampalimaud.org', '').replace('@research.fchampalimaud.org', '')
             u.set_password( User.objects.make_random_password(length=50) )
             u.is_staff = True
 
@@ -47,11 +47,11 @@ class CFSocialAccountAdapter(DefaultSocialAccountAdapter):
     def is_auto_signup_allowed(self, request, sociallogin):
         # If email is specified, check for duplicate and if so, no auto signup.
         email = user_email(sociallogin.account.user)
-        return email.endswith('@neuro.fchampalimaud.org')
+        return email.endswith('@neuro.fchampalimaud.org') or email.endswith('@research.fchampalimaud.org')
 
     def is_open_for_signup(self, request, sociallogin):
         email = user_email(sociallogin.account.user)
-        return email.endswith('@neuro.fchampalimaud.org')
+        return email.endswith('@neuro.fchampalimaud.org') or email.endswith('@research.fchampalimaud.org')
 
 
 class CFAccountAdapter(DefaultAccountAdapter):
@@ -62,7 +62,7 @@ class CFAccountAdapter(DefaultAccountAdapter):
         """
         Marks the email address as confirmed on the db
         """
-        if email_address.email.endswith('@neuro.fchampalimaud.org') or email_address.email.endswith('@fundacaochampalimaud.pt'):
+        if email_address.email.endswith('@neuro.fchampalimaud.org') or email_address.email.endswith('@fundacaochampalimaud.pt') or email.endswith('@research.fchampalimaud.org'):
             email_address.verified = True
             email_address.set_as_primary(conditional=True)
             email_address.save()
@@ -71,11 +71,11 @@ class CFAccountAdapter(DefaultAccountAdapter):
         from django.contrib.auth import login
 
         if not hasattr(user, 'backend'): user.backend = "allauth.account.auth_backends.AuthenticationBackend"
-        if user.is_superuser or user.email.endswith('@fundacaochampalimaud.pt') or user.email.endswith('@neuro.fchampalimaud.org'): 
+        if user.is_superuser or user.email.endswith('@fundacaochampalimaud.pt') or user.email.endswith('@neuro.fchampalimaud.org') or email.endswith('@research.fchampalimaud.org'): 
             login(request, user)
 
     def save_user(self, request, user, form, commit=True):
-        if form['email'].value().endswith('@fundacaochampalimaud.pt') or form['email'].value().endswith('@neuro.fchampalimaud.org'): 
+        if form['email'].value().endswith('@fundacaochampalimaud.pt') or form['email'].value().endswith('@neuro.fchampalimaud.org') or email.endswith('@research.fchampalimaud.org'): 
             user = super( CFAccountAdapter, self ).save_user(request, user, form, commit=True)
             user.is_staff = True
             g = Group.objects.get(name=settings.PROFILE_GUEST)
