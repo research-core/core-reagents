@@ -107,7 +107,7 @@ class AbstractPlasmids(AbstractPlasmid,
 		return True
 				
 	def is_complete(self):
-		return self.ShowHideIf('plasmid_gateway','TRUE;', ['plasmid_vector']) and \
+		return self.ShowHideIf('plasmid_gateway','Y;', ['plasmid_vector']) and \
 			self.ShowHideIf('plasmid_mcs','on;', ['plasmid_sc_enzymes']) and \
 			self.ShowHideIf('vectortype','6;8', ['plasmid_system', 'plasmid_flippases', 'plasmid_attb', 'plasmid_marker']) and \
 			getattr(self,'plasmid_name')!=None and \
