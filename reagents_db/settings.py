@@ -139,7 +139,10 @@ SITE_ID = 1
 
 PROFILE_GUEST = 'PROFILE: Guest'
 
-
+try:
+    exec (open("reagents_db/dev-settings.cfg").read())
+except:
+    pass
 
 try:
     exec( open( "/etc/swpprjs/reagents.cfg" ).read() )
