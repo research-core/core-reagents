@@ -125,6 +125,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static', "js"),
 )
 
+SUIT_CONFIG= {
+    'MENU_EXCLUDE': ('reagents.enzymetype','reagents.growthstrains','reagents.vectortype','reagents.antibioticresistance', 'reagents.lab', 'reagents.supplier',),
+}
 
 BASE_URL = 'http://cnp-intranet.champalimaud.pt:8383'
 LOGIN_URL = "/accounts/login/"
