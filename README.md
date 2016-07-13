@@ -5,7 +5,7 @@ Database to manage reagents stock.
 Model spreadsheet: https://docs.google.com/spreadsheets/d/1FXhRND7HAgtGgicinPEjvEGMtVt9KIZo0T8W_9JtOdU
 
 
-![cover image]()
+![cover image](https://bytebucket.org/fchampalimaud/reagents-db/raw/2094c0add6a176c77e71d3ff47319d18b0caa4d4/cover_image.png?token=1bda18209bf8b1e6382a8b7121eb0b9295b3966d)
 
 ## Setting environment
 
@@ -44,3 +44,9 @@ Model spreadsheet: https://docs.google.com/spreadsheets/d/1FXhRND7HAgtGgicinPEjv
 1. Merge current changes to production branch.
 2. Build the Jenkins Job "reagents-db"
 3. Login on cnp-intranet.champalimaud.pt and reload apache server
+
+## Packaging (optional)
+In principle, there is no need for packaging because Jenkins will do the hard work but anyway this is how to do it:
+
+	python setup.py sdist --formats=zip
+
