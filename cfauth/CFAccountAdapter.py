@@ -62,7 +62,7 @@ class CFAccountAdapter(DefaultAccountAdapter):
         """
         Marks the email address as confirmed on the db
         """
-        if email_address.email.endswith('@neuro.fchampalimaud.org') or email_address.email.endswith('@fundacaochampalimaud.pt') or email.endswith('@research.fchampalimaud.org'):
+        if email_address.email.endswith('@neuro.fchampalimaud.org') or email_address.email.endswith('@fundacaochampalimaud.pt') or email_address.email.endswith('@research.fchampalimaud.org'):
             email_address.verified = True
             email_address.set_as_primary(conditional=True)
             email_address.save()
@@ -71,11 +71,11 @@ class CFAccountAdapter(DefaultAccountAdapter):
         from django.contrib.auth import login
 
         if not hasattr(user, 'backend'): user.backend = "allauth.account.auth_backends.AuthenticationBackend"
-        if user.is_superuser or user.email.endswith('@fundacaochampalimaud.pt') or user.email.endswith('@neuro.fchampalimaud.org') or email.endswith('@research.fchampalimaud.org'): 
+        if user.is_superuser or user.email.endswith('@fundacaochampalimaud.pt') or user.email.endswith('@neuro.fchampalimaud.org') or user.email.endswith('@research.fchampalimaud.org'): 
             login(request, user)
 
     def save_user(self, request, user, form, commit=True):
-        if form['email'].value().endswith('@fundacaochampalimaud.pt') or form['email'].value().endswith('@neuro.fchampalimaud.org') or email.endswith('@research.fchampalimaud.org'): 
+        if form['email'].value().endswith('@fundacaochampalimaud.pt') or form['email'].value().endswith('@neuro.fchampalimaud.org') or form['email'].value().endswith('@research.fchampalimaud.org'): 
             user = super( CFAccountAdapter, self ).save_user(request, user, form, commit=True)
             user.is_staff = True
             g = Group.objects.get(name=settings.PROFILE_GUEST)
