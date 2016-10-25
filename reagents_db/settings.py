@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -26,7 +26,6 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -61,7 +60,6 @@ ROOT_URLCONF = 'reagents_db.urls'
 
 WSGI_APPLICATION = 'reagents_db.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -89,15 +87,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
-
-
-
-
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.request",
@@ -107,40 +96,58 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     "allauth.socialaccount.context_processors.socialaccount",
 )
 
-
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,"templates"),
+    os.path.join(BASE_DIR, "templates"),
 )
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'static', "img"),
-    os.path.join(BASE_DIR,'static', "css"),
-    os.path.join(BASE_DIR,'static', "js"),
+    os.path.join(BASE_DIR, 'static', "img"),
+    os.path.join(BASE_DIR, 'static', "css"),
+    os.path.join(BASE_DIR, 'static', "js"),
 )
 
+SUIT_CONFIG = {
+    'MENU_EXCLUDE': ('reagents.reagent', 'reagents.enzymetype', 'reagents.growthstrains', 'reagents.vectortype',
+                     'reagents.antibioticresistance', 'reagents.lab', 'reagents.supplier',),
+}
+
+EXCLUDE_ADMIN_APPS_MODELS = (
+    'Reagents.Reagent',
+    'Reagents.EnzymeType',
+    'Reagents.GrowthStrains',
+    'Reagents.VectorType',
+    'Reagents.AntibioticResistance',
+    'Reagents.Lab',
+    'Reagents.Supplier',
+)
 
 BASE_URL = 'http://cnp-intranet.champalimaud.pt:8383'
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_ADAPTER = "cfauth.CFAccountAdapter.CFSocialAccountAdapter"
-ACCOUNT_ADAPTER              = "cfauth.CFAccountAdapter.CFAccountAdapter"
-ACCOUNT_EMAIL_REQUIRED       = True
-SOCIALACCOUNT_AUTO_SIGNUP    = True
+ACCOUNT_ADAPTER = "cfauth.CFAccountAdapter.CFAccountAdapter"
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 SITE_ID = 1
 
-
 PROFILE_GUEST = 'PROFILE: Guest'
 
-
+try:
+    exec (open("reagents_db/dev-settings.cfg").read())
+except:
+    pass
 
 try:
-    exec( open( "/etc/swpprjs/reagents.cfg" ).read() )
-except: pass
+    exec (open("/etc/swpprjs/reagents.cfg").read())
+except:
+    pass
