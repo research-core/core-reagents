@@ -20,6 +20,7 @@ class AbstractAntibody(models.Model):
 	antibody_working_concentration = models.CharField("Working concentration", max_length=50, null=True,blank=True)
 	antibody_reference = models.CharField("Reference", max_length=50)
 	supplier = models.ForeignKey("Supplier", verbose_name="Supplier")
+	lab = models.ForeignKey("Lab", verbose_name="Lab")
 	contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
 	antibody_notes = models.TextField("Notes", null=True,blank=True)
 
@@ -29,6 +30,8 @@ class AbstractAntibody(models.Model):
 class AbstractAntibody(AbstractAntibody):
 	
 	def __unicode__(self): return force_text(self.antibody_name)
+
+	def __str__(self): return str(self.__unicode__())
 
 
 	class Meta:
@@ -72,6 +75,7 @@ class AbstractAntibody(AbstractAntibody):
 			getattr(self,'antibody_working_concentration')!=None and \
 			getattr(self,'antibody_reference')!=None and \
 			getattr(self,'supplier')!=None and \
+			getattr(self,'lab')!=None and \
 			getattr(self,'contact')!=None and \
 			getattr(self,'antibody_notes')!=None
 	is_complete.short_description="Complete"

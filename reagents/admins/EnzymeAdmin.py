@@ -11,8 +11,8 @@ from django.db import models
 class EnzymeAdminAbstract(admin.ModelAdmin):
 
 	list_display = ('enzyme_name','enzymetype','contact',)
-	list_filter = ('enzymetype','supplier','lab',)
-	search_fields = ['enzyme_reference','contact','enzyme_name']
+	list_filter = ('ensyme_id','enzymetype','supplier','lab',)
+	search_fields = ['ensyme_id','enzyme_reference','contact',]
 	readonly_fields = ('ensyme_id',)
 
 	fieldsets = [

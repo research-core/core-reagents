@@ -1,46 +1,46 @@
 ##### auto:start:Enzyme #####
-from models import Enzyme
-from admins.EnzymeAdmin import *
+from reagents.models import Enzyme
+from reagents.admins.EnzymeAdmin import *
 
 class EnzymeAdmin(EnzymeAdminAbstract):
 	pass
 	
 	##### auto:end:Enzyme #####
 ##### auto:start:Primer #####
-from models import Primer
-from admins.PrimerAdmin import *
+from reagents.models import Primer
+from reagents.admins.PrimerAdmin import *
 
 class PrimerAdmin(PrimerAdminAbstract):
 	pass
 	
 	##### auto:end:Primer #####
 ##### auto:start:Antibody #####
-from models import Antibody
-from admins.AntibodyAdmin import *
+from reagents.models import Antibody
+from reagents.admins.AntibodyAdmin import *
 
 class AntibodyAdmin(AntibodyAdminAbstract):
 	pass
 	
 	##### auto:end:Antibody #####
 ##### auto:start:Supplier #####
-from models import Supplier
-from admins.SupplierAdmin import *
+from reagents.models import Supplier
+from reagents.admins.SupplierAdmin import *
 
 class SupplierAdmin(SupplierAdminAbstract):
 	pass
 	
 	##### auto:end:Supplier #####
 ##### auto:start:EnzymeType #####
-from models import EnzymeType
-from admins.EnzymeTypeAdmin import *
+from reagents.models import EnzymeType
+from reagents.admins.EnzymeTypeAdmin import *
 
 class EnzymeTypeAdmin(EnzymeTypeAdminAbstract):
 	pass
 	
 	##### auto:end:EnzymeType #####
 ##### auto:start:Plasmids #####
-from models import Plasmids
-from admins.PlasmidsAdmin import *
+from reagents.models import Plasmids
+from reagents.admins.PlasmidsAdmin import *
 
 class PlasmidsAdmin(PlasmidsAdminAbstract):
 	pass
@@ -53,8 +53,8 @@ admin.site.register(Supplier, SupplierAdmin)
 admin.site.register(EnzymeType, EnzymeTypeAdmin)
 admin.site.register(Plasmids, PlasmidsAdmin)
 ##### auto:start:VectorType #####
-from models import VectorType
-from admins.VectorTypeAdmin import *
+from reagents.models import VectorType
+from reagents.admins.VectorTypeAdmin import *
 
 class VectorTypeAdmin(VectorTypeAdminAbstract):
 	pass
@@ -62,8 +62,8 @@ class VectorTypeAdmin(VectorTypeAdminAbstract):
 	##### auto:end:VectorType #####
 admin.site.register(VectorType, VectorTypeAdmin)
 ##### auto:start:Lab #####
-from models import Lab
-from admins.LabAdmin import *
+from reagents.models import Lab
+from reagents.admins.LabAdmin import *
 
 class LabAdmin(LabAdminAbstract):
 	pass
@@ -80,24 +80,24 @@ class ReagentAdmin(ReagentAdminAbstract):
 	##### auto:end:Reagent #####
 admin.site.register(Reagent, ReagentAdmin)
 ##### auto:start:Chemical #####
-from models import Chemical
-from admins.ChemicalAdmin import *
+from reagents.models import Chemical
+from reagents.admins.ChemicalAdmin import *
 
 class ChemicalAdmin(ChemicalAdminAbstract):
 	pass
 	
 	##### auto:end:Chemical #####
 ##### auto:start:GrowthStrains #####
-from models import GrowthStrains
-from admins.GrowthStrainsAdmin import *
+from reagents.models import GrowthStrains
+from reagents.admins.GrowthStrainsAdmin import *
 
 class GrowthStrainsAdmin(GrowthStrainsAdminAbstract):
 	pass
 	
 	##### auto:end:GrowthStrains #####
 ##### auto:start:AntibioticResistance #####
-from models import AntibioticResistance
-from admins.AntibioticResistanceAdmin import *
+from reagents.models import AntibioticResistance
+from reagents.admins.AntibioticResistanceAdmin import *
 
 class AntibioticResistanceAdmin(AntibioticResistanceAdminAbstract):
 	pass
