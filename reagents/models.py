@@ -5,6 +5,8 @@ class Enzyme(AbstractEnzyme):
 	pass
 	##### auto:end:Enzyme #####
 	class Meta:
+		verbose_name = "Enzyme"
+		verbose_name_plural = "Enzymes"
 	    unique_together = ('enzyme_name', 'enzyme_reference', 'supplier', 'lab',)
 	
 ##### auto:start:Primer #####
@@ -14,6 +16,8 @@ class Primer(AbstractPrimer):
 	pass
 	##### auto:end:Primer #####
 	class Meta:
+		verbose_name = "Primer"
+		verbose_name_plural = "Primers"
 	    unique_together = ('primer_name', 'primer_sequence', 'supplier', 'lab',)
 	
 ##### auto:start:Antibody #####
@@ -23,6 +27,8 @@ class Antibody(AbstractAntibody):
 	pass
 	##### auto:end:Antibody #####
 	class Meta:
+		verbose_name = "Antibody"
+		verbose_name_plural = "Antibodies"
 	    unique_together = ('antibody_name', 'antibody_reference', 'supplier', 'lab',)
 	
 ##### auto:start:Supplier #####
@@ -44,6 +50,8 @@ class Plasmids(AbstractPlasmids):
 	pass
 	##### auto:end:Plasmids #####
 	class Meta:
+		verbose_name = "Plasmid"
+		verbose_name_plural = "Plasmids"
 	    unique_together = ('plasmid_name', 'plasmid_reference', 'supplier', 'lab',)
 	
 ##### auto:start:VectorType #####
@@ -71,7 +79,10 @@ class Chemical(AbstractChemical):
 	pass
 	##### auto:end:Chemical #####
 	class Meta:
+		verbose_name = "Chemical"
+		verbose_name_plural = "Chemicals"
 	    unique_together = ('chemical_name', 'chemical_reference', 'supplier', 'lab',)
+
 ##### auto:start:GrowthStrains #####
 from abstractmodels.GrowthStrains import AbstractGrowthStrains
 
