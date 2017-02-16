@@ -4,6 +4,9 @@ from abstractmodels.Enzyme import AbstractEnzyme
 class Enzyme(AbstractEnzyme):
 	pass
 	##### auto:end:Enzyme #####
+	class Meta:
+	    unique_together = ('enzyme_name', 'enzyme_reference', 'supplier', 'lab',)
+	
 ##### auto:start:Primer #####
 from abstractmodels.Primer import AbstractPrimer
 

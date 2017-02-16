@@ -7,7 +7,7 @@ from django.utils.encoding import force_text
 
 
 class AbstractEnzyme(models.Model):
-	ensyme_id = models.AutoField("Enzyme id", primary_key=True)
+	enzyme_id = models.AutoField("Enzyme id", primary_key=True)
 	enzyme_name = models.CharField("Name", max_length=50)
 	enzyme_description = models.TextField("Description", null=True,blank=True)
 	enzyme_reference = models.CharField("Reference", max_length=50)
