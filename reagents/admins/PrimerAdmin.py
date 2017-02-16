@@ -10,7 +10,7 @@ from django.db import models
 
 class PrimerAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('primer_name','primer_sequence','contact',)
+	list_display = ('primer_name','primer_sequence','lab','supplier','contact',)
 	list_filter = ('primer_id','lab','supplier',)
 	search_fields = ['primer_id','primer_name','primer_sequence','primer_purpose','primer_melting_temp','contact',]
 	readonly_fields = ('primer_id',)

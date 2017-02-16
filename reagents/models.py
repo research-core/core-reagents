@@ -43,6 +43,9 @@ from abstractmodels.Plasmids import AbstractPlasmids
 class Plasmids(AbstractPlasmids):
 	pass
 	##### auto:end:Plasmids #####
+	class Meta:
+	    unique_together = ('plasmid_name', 'plasmid_reference', 'supplier', 'lab',)
+	
 ##### auto:start:VectorType #####
 from abstractmodels.VectorType import AbstractVectorType
 
