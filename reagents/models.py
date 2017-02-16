@@ -10,6 +10,9 @@ from abstractmodels.Primer import AbstractPrimer
 class Primer(AbstractPrimer):
 	pass
 	##### auto:end:Primer #####
+	class Meta:
+	    unique_together = ('primer_name', 'primer_sequence', 'supplier', 'lab',)
+	
 ##### auto:start:Antibody #####
 from abstractmodels.Antibody import AbstractAntibody
 

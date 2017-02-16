@@ -21,7 +21,7 @@ class AbstractPrimer(models.Model):
 
 class AbstractPrimer(AbstractPrimer):
 	
-	def __unicode__(self): return force_text(self.primer_name)
+	def __unicode__(self): return force_text(self.primer_name)+' - '+force_text(self.primer_sequence)+' - '+force_text(self.lab)+' - '+force_text(self.supplier)
 
 
 	class Meta:
