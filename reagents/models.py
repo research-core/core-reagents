@@ -16,6 +16,9 @@ from abstractmodels.Antibody import AbstractAntibody
 class Antibody(AbstractAntibody):
 	pass
 	##### auto:end:Antibody #####
+	class Meta:
+	    unique_together = ('antibody_name', 'antibody_reference', 'supplier', 'lab',)
+	
 ##### auto:start:Supplier #####
 from abstractmodels.Supplier import AbstractSupplier
 

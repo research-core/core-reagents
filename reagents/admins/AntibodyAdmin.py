@@ -10,7 +10,7 @@ from django.db import models
 
 class AntibodyAdminAbstract(admin.ModelAdmin):
 
-	list_display = ('antibody_name','antibody_target','contact',)
+	list_display = ('antibody_name','antibody_target','antibody_reactivity','antibody_reference','supplier','lab','contact',)
 	list_filter = ('antibody_id','supplier','lab',)
 	search_fields = ['antibody_id','antibody_name','antibody_target','antibody_prim_sec','antibody_conjuged2','antibody_reactivity','antibody_description','antibody_applications','antibody_stock_concentration','antibody_reference','contact',]
 	readonly_fields = ('antibody_id',)
