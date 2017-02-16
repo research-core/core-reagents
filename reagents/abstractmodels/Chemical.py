@@ -8,7 +8,7 @@ from django.utils.encoding import force_text
 
 class AbstractChemical(models.Model):
 	chemical_id = models.AutoField("Chemical id", primary_key=True)
-	chemical_name = models.CharField("Name", max_length=50, unique=True)
+	chemical_name = models.CharField("Name", max_length=100)
 	chemical_formula = models.CharField("Formula", max_length=50)
 	chemical_purpose = models.TextField("Purpose", null=True,blank=True)
 	chemical_reference = models.CharField("Reference", max_length=50)

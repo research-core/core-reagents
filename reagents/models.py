@@ -58,6 +58,8 @@ from abstractmodels.Chemical import AbstractChemical
 class Chemical(AbstractChemical):
 	pass
 	##### auto:end:Chemical #####
+	class Meta:
+	    unique_together = ('chemical_name', 'chemical_reference', 'supplier', 'lab',)
 ##### auto:start:GrowthStrains #####
 from abstractmodels.GrowthStrains import AbstractGrowthStrains
 
