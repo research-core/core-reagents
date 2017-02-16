@@ -7,8 +7,8 @@ class Enzyme(AbstractEnzyme):
 	class Meta:
 		verbose_name = "Enzyme"
 		verbose_name_plural = "Enzymes"
-	    unique_together = ('enzyme_name', 'enzyme_reference', 'supplier', 'lab',)
-	
+		unique_together = ('enzyme_name', 'enzyme_reference', 'supplier', 'lab',)
+
 ##### auto:start:Primer #####
 from abstractmodels.Primer import AbstractPrimer
 
@@ -18,8 +18,8 @@ class Primer(AbstractPrimer):
 	class Meta:
 		verbose_name = "Primer"
 		verbose_name_plural = "Primers"
-	    unique_together = ('primer_name', 'primer_sequence', 'supplier', 'lab',)
-	
+		unique_together = ('primer_name', 'primer_sequence', 'supplier', 'lab',)
+
 ##### auto:start:Antibody #####
 from abstractmodels.Antibody import AbstractAntibody
 
@@ -29,8 +29,8 @@ class Antibody(AbstractAntibody):
 	class Meta:
 		verbose_name = "Antibody"
 		verbose_name_plural = "Antibodies"
-	    unique_together = ('antibody_name', 'antibody_reference', 'supplier', 'lab',)
-	
+		unique_together = ('antibody_name', 'antibody_reference', 'supplier', 'lab',)
+
 ##### auto:start:Supplier #####
 from abstractmodels.Supplier import AbstractSupplier
 
@@ -52,8 +52,8 @@ class Plasmids(AbstractPlasmids):
 	class Meta:
 		verbose_name = "Plasmid"
 		verbose_name_plural = "Plasmids"
-	    unique_together = ('plasmid_name', 'plasmid_reference', 'supplier', 'lab',)
-	
+		unique_together = ('plasmid_name', 'plasmid_reference', 'supplier', 'lab',)
+
 ##### auto:start:VectorType #####
 from abstractmodels.VectorType import AbstractVectorType
 
@@ -81,7 +81,7 @@ class Chemical(AbstractChemical):
 	class Meta:
 		verbose_name = "Chemical"
 		verbose_name_plural = "Chemicals"
-	    unique_together = ('chemical_name', 'chemical_reference', 'supplier', 'lab',)
+		unique_together = ('chemical_name', 'chemical_reference', 'supplier', 'lab',)
 
 ##### auto:start:GrowthStrains #####
 from abstractmodels.GrowthStrains import AbstractGrowthStrains
