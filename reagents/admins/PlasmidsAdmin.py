@@ -20,11 +20,11 @@ class PlasmidsAdminAbstract(admin.ModelAdmin):
 			'classes': ('suit-tab suit-tab-plasmid',),
 			'fields': ['plasmid_name','vectortype','plasmid_mcs','plasmid_sc_enzymes','plasmid_backbone','plasmid_gateway','plasmid_vector']
 		}),
-		('Sequence Information',{
+		('Sequence information',{
 			'classes': ('suit-tab suit-tab-plasmid',),
 			'fields': ['plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_sequence2']
 		}),
-		('Growth in Bacteria',{
+		('Growth in bacteria',{
 			'classes': ('suit-tab suit-tab-plasmid',),
 			'fields': ['anti_resistance','growthstrain','plasmid_temperature','plasmid_methylation']
 		}),

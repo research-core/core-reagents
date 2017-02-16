@@ -22,7 +22,8 @@ Model spreadsheet: https://docs.google.com/spreadsheets/d/1FXhRND7HAgtGgicinPEjv
 
 ### Set up Django:
 
-    python manage.py createsuperuser
+    python manage.py createsuperuser # alternative 1: create new super user
+    python manage.py changepassword root # alternative 2: change root password
     create file reagents_db/dev-settings.cfg to override Django settings (usually to override database settings)
 
 ## Updating data model

@@ -17,8 +17,6 @@ class AbstractEnzymeType(AbstractEnzymetype):
 	
 	def __unicode__(self): return force_text(self.enzymetype_name)
 
-	def __str__(self): return str(self.__unicode__())
-
 
 	class Meta:
 		abstract = True
