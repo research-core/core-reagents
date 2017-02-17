@@ -1,5 +1,6 @@
-include LICENSE
-include README.rst
+include CHANGES.md
+include LICENSE.md
+include README.md
 include manage.py
 recursive-include static *
 recursive-include templates *

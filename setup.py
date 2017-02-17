@@ -17,7 +17,7 @@ from setuptools import setup, find_packages
 setup(
 
     name='Reagents DB',
-    version='0.0.5',
+    version='1.1.0',
     description="""Database to manage reagents stock.""",
     author='Ricardo Ribeiro and Carlos Mao de Ferro',
     author_email='carlos.maodeferro@neuro.fchampalimaud.org',

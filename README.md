@@ -26,13 +26,25 @@ Model spreadsheet: https://docs.google.com/spreadsheets/d/1FXhRND7HAgtGgicinPEjv
     python manage.py changepassword root # alternative 2: change root password
     create file reagents_db/dev-settings.cfg to override Django settings (usually to override database settings)
 
-## Updating data model
+## Updating data model (on development)
 
 (first, install gsheet2django)
 
     gsheet2django 1FXhRND7HAgtGgicinPEjvEGMtVt9KIZo0T8W_9JtOdU
     python manage.py makemigrations reagents
     python manage.py migrate
+
+WARNING: NEVER UPDATE DATABASE FIELDS DIRECTLY. USE DJANGO makemigrations FOR THAT.
+
+## Updating data model (on production)
+
+    git pull
+    python manage.py migrate
+
+Note: If you want to update data for a table, dump that table's structure and content on you development database and import on production.
+
+WARNING: NEVER UPDATE DATABASE FIELDS DIRECTLY. USE DJANGO makemigrations FOR THAT.
+
 
 
 # Running
