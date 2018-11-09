@@ -8,3 +8,5 @@ dist/*
 test/*
 dev-settings.cfg
 media
+
+\.DS_Store
