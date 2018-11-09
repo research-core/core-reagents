@@ -4,7 +4,7 @@ from django import template
 register = template.Library()
 
 
-@register.assignment_tag()
+@register.simple_tag()
 def get_my_app_list(app_list):
     """
     This will filter the apps in the admin based on app and model as defined in Django settings

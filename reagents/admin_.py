@@ -1,5 +1,5 @@
 ##### auto:start:Enzyme #####
-from models import Enzyme
+from .models import Enzyme
 from admins.EnzymeAdmin import *
 
 class EnzymeAdmin(EnzymeAdminAbstract):

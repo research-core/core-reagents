@@ -25,6 +25,6 @@ setup(
 
     url='http://gitlab/swp/Reagents-db.git',
 
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=['reagents'],
 
 )
