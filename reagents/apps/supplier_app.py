@@ -11,10 +11,9 @@ class SupplierAdminApp(ModelAdminWidget):
     
     TITLE = 'Suppliers'
 
-    LIST_DISPLAY = ('supplier_id','supplier_name',)
+    LIST_DISPLAY = ('supplier_name',)
     
-    SEARCH_FIELDS = ['supplier_id','supplier_name__icontains',]
-    READ_ONLY = ('supplier_id',)
+    SEARCH_FIELDS = ['supplier_name__icontains',]
 
     FIELDSETS = ['supplier_name']
     
@@ -23,9 +22,7 @@ class SupplierAdminApp(ModelAdminWidget):
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'left>ReagentAdminApp'
-    ORQUESTRA_MENU_ORDER = 0
+    ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'truck'
     ########################################################
-    
-    
-    
+    AUTHORIZED_GROUPS = ['superuser']

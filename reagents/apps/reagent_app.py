@@ -1,25 +1,13 @@
 from confapp import conf
-from pyforms_web.widgets.django import ModelAdminWidget
+from pyforms_web.organizers import no_columns, segment
+from pyforms.basewidget import BaseWidget
 
-from reagents.models import Reagent
 
-class ReagentAdminApp(ModelAdminWidget):
+class ReagentAdminApp(BaseWidget):
     
 
-    UID   = 'reagents-Reagent-app'.lower()
-    MODEL = Reagent
-    
+    UID   = 'reagents-db'
     TITLE = 'Reagents'
-
-    LIST_FILTER = ('supplier','lab',)
-    SEARCH_FIELDS = [
-        'reagent_name__icontains',
-        'reagent_reagent__icontains',
-        'reagent_purpose__icontains',
-    ]
-    READ_ONLY = ('reagent_id',)
-
-    FIELDSETS = ['reagent_name','reagent_reagent','reagent_purpose','supplier','lab']
 
     ########################################################
     #### ORQUESTRA CONFIGURATION ###########################
@@ -29,6 +17,14 @@ class ReagentAdminApp(ModelAdminWidget):
     ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'database'
     ########################################################
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.formset = [
+            """h3:The reagents database contains information about the diferent reagents available on the Labs, and that can be shared amoung the CR community.""",
+            """You will find here: <br/><ul><li>Antibodies</li><li>Chemicals</li><li>Enzymes</li><li>Plasmids</li><li>Primers</li></ul>"""
+        ]
     
     
     

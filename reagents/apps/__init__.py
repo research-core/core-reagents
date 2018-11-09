@@ -5,7 +5,7 @@ from .chemical_app import ChemicalAdminApp
 from .enzyme_app import EnzymeAdminApp
 from .enzymetype_app import EnzymeTypeAdminApp
 from .growthstrains_app import GrowthStrainsAdminApp
-from .plasmids_app import PlasmidsAdminApp
+from .plasmids_app.plasmids_list import PlasmidsAdminApp
 from .primer_app import PrimerAdminApp
 from .reagent_app import ReagentAdminApp
 from .supplier_app import SupplierAdminApp

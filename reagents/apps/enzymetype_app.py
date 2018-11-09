@@ -11,10 +11,9 @@ class EnzymeTypeAdminApp(ModelAdminWidget):
     
     TITLE = 'Enzymes Types'
 
-    LIST_DISPLAY = ('enzymetype_id','enzymetype_name',)
+    LIST_DISPLAY = ('enzymetype_name',)
     
-    SEARCH_FIELDS = ['enzymetype_id','enzymetype_name__icontains',]
-    READ_ONLY = ('enzymetype_id',)
+    SEARCH_FIELDS = ['enzymetype_name__icontains',]
 
     FIELDSETS = ['enzymetype_name']
     
@@ -23,9 +22,8 @@ class EnzymeTypeAdminApp(ModelAdminWidget):
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'left>ReagentAdminApp'
-    ORQUESTRA_MENU_ORDER = 0
+    ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'database'
     ########################################################
-    
-    
-    
+
+    AUTHORIZED_GROUPS = ['superuser']

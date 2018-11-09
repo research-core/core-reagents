@@ -11,10 +11,10 @@ class GrowthStrainsAdminApp(ModelAdminWidget):
     
     TITLE = 'Growth Strains'
 
-    LIST_DISPLAY = ('growthstrain_id','growthstrain_name',)
+    LIST_DISPLAY = ('growthstrain_name',)
     
-    SEARCH_FIELDS = ['growthstrain_id','growthstrain_name__icontains',]
-    READ_ONLY = ('growthstrain_id',)
+    SEARCH_FIELDS = ['growthstrain_name__icontains',]
+
 
     FIELDSETS = ['growthstrain_name']
     ########################################################
@@ -22,9 +22,7 @@ class GrowthStrainsAdminApp(ModelAdminWidget):
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'left>ReagentAdminApp'
-    ORQUESTRA_MENU_ORDER = 0
+    ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'database'
     ########################################################
-    
-    
-    
+    AUTHORIZED_GROUPS = ['superuser']

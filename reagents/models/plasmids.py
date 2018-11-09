@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.encoding import force_text
-
+from django.core.exceptions import ValidationError
 
 BOOLEAN = (
     ('N',"""No"""),
@@ -59,6 +59,11 @@ class Plasmids(models.Model):
     plasmid_temperature = models.IntegerField("Temperature (C)", max_length=3)
     plasmid_methylation = models.CharField("Methylation", max_length=100, null=True,blank=True)
 
+
+    
+
+    
+
     class Meta:
         verbose_name = "Plasmid"
         verbose_name_plural = "Plasmids"
@@ -67,59 +72,29 @@ class Plasmids(models.Model):
     def __str__(self): return force_text(self.plasmid_name)
 
 
+    """
+    def clean(self):
 
-    def ShowHideIf(self, checkingField, rules):
-        values, listOfFields = rules
-        values = values.split(';')
-        if str(self.__dict__[checkingField]) in values:
-            for field in listOfFields:
-                if not self.__dict__[checkingField]!=None: return False
-        return True
-                
-    def ShowHideIfManyToMany(self, checkingField, rules):
-        values, listOfFields = rules
-        values = values.split(';')
-        
-        selected = getattr(self,checkingField).all()
-        active = False
-        for v in selected:
-            if v in values: 
-                active=True
-                break
-        if active:
-            for field in listOfFields:
-                if self.__dict__[checkingField]==None: return False
-        return True
-                
-    def is_complete(self):
-        return self.ShowHideIf('plasmid_gateway','Y;', ['plasmid_vector']) and \
-            self.ShowHideIf('plasmid_mcs','on;', ['plasmid_sc_enzymes']) and \
-            self.ShowHideIf('vectortype','6;8', ['plasmid_system', 'plasmid_flippases', 'plasmid_attb', 'plasmid_marker']) and \
-            getattr(self,'plasmid_name')!=None and \
-            getattr(self,'vectortype')!=None and \
-            getattr(self,'plasmid_mcs')!=None and \
-            getattr(self,'plasmid_sc_enzymes')!=None and \
-            getattr(self,'plasmid_system')!=None and \
-            getattr(self,'plasmid_flippases')!=None and \
-            getattr(self,'plasmid_attb')!=None and \
-            getattr(self,'plasmid_marker')!=None and \
-            getattr(self,'plasmid_promoter')!=None and \
-            getattr(self,'plasmid_transgene')!=None and \
-            getattr(self,'plasmid_fluorchrome')!=None and \
-            getattr(self,'plasmid_seq_primers')!=None and \
-            getattr(self,'plasmid_sequence')!=None and \
-            getattr(self,'plasmid_sequence2')!=None and \
-            getattr(self,'anti_resistance')!=None and \
-            getattr(self,'growthstrain')!=None and \
-            getattr(self,'plasmid_temperature')!=None and \
-            getattr(self,'plasmid_methylation')!=None and \
-            getattr(self,'plasmid_reference')!=None and \
-            getattr(self,'supplier')!=None and \
-            getattr(self,'lab')!=None and \
-            getattr(self,'contact')!=None and \
-            getattr(self,'plasmid_backbone')!=None and \
-            getattr(self,'plasmid_gateway')!=None and \
-            getattr(self,'plasmid_vector')!=None
-    is_complete.short_description="Complete"
-    is_complete.boolean = True
+        if self.plasmid_gateway=='Y':
             
+        else:
+            self.plasmid_vector.hide()
+
+    
+        if self.plasmid_mcs=='on':
+            self.plasmid_sc_enzymes.show()
+        else:
+            self.plasmid_sc_enzymes.hide()
+
+    
+        if self.vectortype in [6,8]:
+            self.plasmid_system.show()
+            self.plasmid_flippases.show()
+            self.plasmid_attb.show()
+            self.plasmid_marker.show()
+        else:
+            self.plasmid_system.hide()
+            self.plasmid_flippases.hide()
+            self.plasmid_attb.hide()
+            self.plasmid_marker.hide()
+    """

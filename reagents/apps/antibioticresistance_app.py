@@ -11,11 +11,9 @@ class AntibioticResistanceAdminApp(ModelAdminWidget):
     
     TITLE = 'Antibiotic Resistances'
 
-    LIST_DISPLAY = ('antibioticresistance_id','antibioticresistance_name',)
+    LIST_DISPLAY = ('antibioticresistance_name',)
+    SEARCH_FIELDS = ['antibioticresistance_name__icontains',]
     
-    SEARCH_FIELDS = ['antibioticresistance_id','antibioticresistance_name__icontains',]
-    READ_ONLY = ('antibioticresistance_id',)
-
     FIELDSETS = ['antibioticresistance_name']
 
     
@@ -24,9 +22,10 @@ class AntibioticResistanceAdminApp(ModelAdminWidget):
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'left>ReagentAdminApp'
-    ORQUESTRA_MENU_ORDER = 0
-    ORQUESTRA_MENU_ICON  = 'database'
+    ORQUESTRA_MENU_ORDER = 100
+    ORQUESTRA_MENU_ICON  = 'pills'
     ########################################################
     
+    AUTHORIZED_GROUPS = ['superuser']
     
     

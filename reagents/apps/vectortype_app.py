@@ -11,10 +11,9 @@ class VectorTypeAdminApp(ModelAdminWidget):
     
     TITLE = 'Vector Types'
 
-    LIST_DISPLAY = ['vectortype_id','vectortype_name',]
+    LIST_DISPLAY = ['vectortype_name',]
     
-    SEARCH_FIELDS = ['vectortype_id','vectortype_name__icontains',]
-    READ_ONLY = ['vectortype_id',]
+    SEARCH_FIELDS = ['vectortype_name__icontains',]
 
     FIELDSETS = ['vectortype_name']
     
@@ -23,9 +22,7 @@ class VectorTypeAdminApp(ModelAdminWidget):
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'left>ReagentAdminApp'
-    ORQUESTRA_MENU_ORDER = 0
+    ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'database'
     ########################################################
-    
-    
-    
+    AUTHORIZED_GROUPS = ['superuser']

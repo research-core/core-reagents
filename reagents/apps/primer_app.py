@@ -1,4 +1,5 @@
 from confapp import conf
+from pyforms_web.organizers import no_columns, segment
 from pyforms_web.widgets.django import ModelAdminWidget
 
 from reagents.models import Primer
@@ -11,19 +12,27 @@ class PrimerAdminApp(ModelAdminWidget):
     
     TITLE = 'Primers'
 
+    LIST_ROWS_PER_PAGE = 20
+
     LIST_DISPLAY = ('primer_name','primer_sequence','lab','supplier','contact',)
-    LIST_FILTER = ('primer_id','lab','supplier',)
+    LIST_FILTER = ('lab','supplier',)
     SEARCH_FIELDS = [
-        'primer_id',
         'primer_name__icontains',
         'primer_sequence__icontains',
         'primer_purpose__icontains',
         'primer_melting_temp__icontains',
         'contact__icontains',
     ]
-    READ_ONLY = ('primer_id',)
+   
 
-    FIELDSETS = ['primer_name','primer_sequence','primer_purpose','primer_melting_temp','lab','supplier','contact']
+    FIELDSETS = [
+        ('primer_name', 'contact', 'lab'),
+        'supplier',
+        segment(
+            ('primer_sequence','primer_melting_temp'),
+            'primer_purpose',
+        )
+    ]
    
     ########################################################
     #### ORQUESTRA CONFIGURATION ###########################

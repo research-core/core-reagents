@@ -3,6 +3,8 @@ from pyforms_web.widgets.django import ModelAdminWidget
 
 from reagents.models import Plasmids
 
+from .plasmids_form import PlasmidsForm
+
 class PlasmidsAdminApp(ModelAdminWidget):
     
 
@@ -10,6 +12,8 @@ class PlasmidsAdminApp(ModelAdminWidget):
     MODEL = Plasmids
     
     TITLE = 'Plasmids'
+
+    LIST_ROWS_PER_PAGE = 20
 
     LIST_DISPLAY = ('plasmid_name','vectortype','plasmid_reference','supplier','lab','contact',)
     LIST_FILTER = ('plasmid_name','vectortype','plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','anti_resistance','growthstrain','supplier','lab',)
@@ -26,12 +30,8 @@ class PlasmidsAdminApp(ModelAdminWidget):
     ]
     READ_ONLY = ('plasmid_id',)
 
-    FIELDSETS = [{
-        'Plasmid': ['plasmid_name','vectortype','plasmid_mcs','plasmid_sc_enzymes','plasmid_backbone','plasmid_gateway','plasmid_vector'],
-        'Sequence information': ['plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','plasmid_promoter','plasmid_transgene','plasmid_fluorchrome','plasmid_seq_primers','plasmid_sequence','plasmid_sequence2'],
-        'Growth in bacteria': ['anti_resistance','growthstrain','plasmid_temperature','plasmid_methylation'],
-        'Where to get it': ['plasmid_reference','supplier','lab','contact']
-    }]
+    EDITFORM_CLASS = PlasmidsForm
+
     
     ########################################################
     #### ORQUESTRA CONFIGURATION ###########################
@@ -41,6 +41,5 @@ class PlasmidsAdminApp(ModelAdminWidget):
     ORQUESTRA_MENU_ORDER = 0
     ORQUESTRA_MENU_ICON  = 'dna'
     ########################################################
-    
     
     
