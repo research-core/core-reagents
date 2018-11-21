@@ -21,7 +21,7 @@ class GrowthStrainsAdminApp(ModelAdminWidget):
     #### ORQUESTRA CONFIGURATION ###########################
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
-    ORQUESTRA_MENU       = 'left>ReagentAdminApp'
+    ORQUESTRA_MENU       = 'middle-left>ReagentAdminApp'
     ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'database'
     ########################################################
