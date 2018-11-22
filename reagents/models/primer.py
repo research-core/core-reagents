@@ -9,7 +9,7 @@ class Primer(models.Model):
     primer_name = models.CharField("Name", max_length=50)
     primer_sequence = models.CharField("Sequence (5'-3')", max_length=100)
     primer_purpose = models.TextField("Purpose")
-    primer_melting_temp = models.IntegerField("Melting Temperature (C)", max_length=3)
+    primer_melting_temp = models.IntegerField("Melting Temperature (C)")
     lab = models.ForeignKey("Lab", verbose_name="Lab", on_delete=models.CASCADE)
     supplier = models.ForeignKey("Supplier", verbose_name="Supplier", on_delete=models.CASCADE)
     contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)

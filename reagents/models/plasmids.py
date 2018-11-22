@@ -56,7 +56,7 @@ class Plasmids(models.Model):
     
     anti_resistance = models.ForeignKey("AntibioticResistance", verbose_name="Antibiotic resistance", on_delete=models.CASCADE)
     growthstrain = models.ForeignKey("GrowthStrains", verbose_name="Growth strain", null=True,blank=True, on_delete=models.CASCADE)
-    plasmid_temperature = models.IntegerField("Temperature (C)", max_length=3)
+    plasmid_temperature = models.IntegerField("Temperature (C)")
     plasmid_methylation = models.CharField("Methylation", max_length=100, null=True,blank=True)
 
 
