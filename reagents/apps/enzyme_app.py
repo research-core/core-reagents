@@ -16,8 +16,12 @@ class EnzymeAdminApp(ModelAdminWidget):
 
     LIST_DISPLAY = ('enzyme_name','enzyme_reference','enzymetype','supplier','lab','contact',)
     LIST_FILTER = ('enzymetype','supplier','lab',)
-    SEARCH_FIELDS = ['enzyme_reference__icontains','contact__icontains',]
-    
+    SEARCH_FIELDS = [
+        'enzyme_name__icontains',
+        'enzyme_reference__icontains',
+        'contact__icontains',
+    ]
+
     FIELDSETS = [
         ('enzyme_name', 'contact', 'lab'),
         'supplier',
