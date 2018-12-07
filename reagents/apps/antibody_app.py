@@ -15,7 +15,7 @@ class AntibodyAdminApp(ModelAdminWidget):
     LIST_ROWS_PER_PAGE = 20
 
     LIST_DISPLAY = ('antibody_name','antibody_target','antibody_reactivity','antibody_reference','supplier','lab','contact',)
-    LIST_FILTER = ('supplier','lab',)
+    LIST_FILTER = ('antibody_target', 'antibody_reactivity', 'supplier', 'lab',)
     SEARCH_FIELDS = [
         'antibody_name__icontains','antibody_target__icontains',
         'antibody_prim_sec__icontains','antibody_conjuged2__icontains',
