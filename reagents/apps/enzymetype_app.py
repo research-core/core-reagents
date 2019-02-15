@@ -23,7 +23,7 @@ class EnzymeTypeAdminApp(ModelAdminWidget):
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'middle-left>ReagentAdminApp'
     ORQUESTRA_MENU_ORDER = 100
-    ORQUESTRA_MENU_ICON  = 'database'
+    ORQUESTRA_MENU_ICON  = 'database teal'
     ########################################################
 
     AUTHORIZED_GROUPS = ['superuser']

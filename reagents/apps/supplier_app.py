@@ -23,6 +23,6 @@ class SupplierAdminApp(ModelAdminWidget):
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'middle-left>ReagentAdminApp'
     ORQUESTRA_MENU_ORDER = 100
-    ORQUESTRA_MENU_ICON  = 'truck'
+    ORQUESTRA_MENU_ICON  = 'truck brown'
     ########################################################
     AUTHORIZED_GROUPS = ['superuser']

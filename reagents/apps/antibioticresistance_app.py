@@ -22,8 +22,8 @@ class AntibioticResistanceAdminApp(ModelAdminWidget):
     ########################################################
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'middle-left>ReagentAdminApp'
-    ORQUESTRA_MENU_ORDER = 100
-    ORQUESTRA_MENU_ICON  = 'pills'
+    ORQUESTRA_MENU_ORDER = 98
+    ORQUESTRA_MENU_ICON  = 'pills red'
     ########################################################
     
     AUTHORIZED_GROUPS = ['superuser']

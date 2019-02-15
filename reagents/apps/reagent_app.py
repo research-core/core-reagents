@@ -4,7 +4,6 @@ from pyforms.basewidget import BaseWidget
 
 
 class ReagentAdminApp(BaseWidget):
-    
 
     UID   = 'reagents-db'
     TITLE = 'Reagents'
@@ -15,7 +14,7 @@ class ReagentAdminApp(BaseWidget):
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'middle-left'
     ORQUESTRA_MENU_ORDER = 100
-    ORQUESTRA_MENU_ICON  = 'database'
+    ORQUESTRA_MENU_ICON  = 'database yellow'
     ########################################################
 
     def __init__(self, *args, **kwargs):

@@ -24,6 +24,6 @@ class LabAdminApp(ModelAdminWidget):
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'middle-left>ReagentAdminApp'
     ORQUESTRA_MENU_ORDER = 100
-    ORQUESTRA_MENU_ICON  = 'flask'
+    ORQUESTRA_MENU_ICON  = 'flask blue'
     ########################################################
     AUTHORIZED_GROUPS = ['superuser']

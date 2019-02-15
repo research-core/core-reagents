@@ -37,7 +37,7 @@ class ChemicalAdminApp(ModelAdminWidget):
     LAYOUT_POSITION      = conf.ORQUESTRA_HOME
     ORQUESTRA_MENU       = 'middle-left>ReagentAdminApp'
     ORQUESTRA_MENU_ORDER = 0
-    ORQUESTRA_MENU_ICON  = 'flask'
+    ORQUESTRA_MENU_ICON  = 'flask orange'
     ########################################################
     
     
