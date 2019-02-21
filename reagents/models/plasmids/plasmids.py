@@ -4,6 +4,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.encoding import force_text
 from django.core.exceptions import ValidationError
 
+from .plasmids_queryset import PlasmidsQuerySet
+
 BOOLEAN = (
     ('N',"""No"""),
     ('Y',"""Yes"""),
@@ -59,8 +61,7 @@ class Plasmids(models.Model):
     plasmid_temperature = models.IntegerField("Temperature (C)")
     plasmid_methylation = models.CharField("Methylation", max_length=100, null=True,blank=True)
 
-
-    
+    objects = PlasmidsQuerySet.as_manager()
 
     
 

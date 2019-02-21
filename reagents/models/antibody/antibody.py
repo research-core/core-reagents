@@ -1,10 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.encoding import force_text
-
-
-
+from .antibody_queryset import AntibodyQuerySet
 
 class Antibody(models.Model):
     antibody_id = models.AutoField("Antibody id", primary_key=True)
@@ -24,6 +20,8 @@ class Antibody(models.Model):
     lab = models.ForeignKey("Lab", verbose_name="Lab", default=True, on_delete=models.CASCADE)
     contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
     antibody_notes = models.TextField("Notes", null=True,blank=True)
+
+    objects = AntibodyQuerySet.as_manager()
 
     class Meta:
         verbose_name = "Antibody"

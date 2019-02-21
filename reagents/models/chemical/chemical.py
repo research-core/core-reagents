@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.encoding import force_text
 
-
+from .chemical_queryset import ChemicalQuerySet
 
 
 class Chemical(models.Model):
@@ -15,6 +15,8 @@ class Chemical(models.Model):
     supplier = models.ForeignKey("Supplier", verbose_name="Supplier", on_delete=models.CASCADE)
     lab = models.ForeignKey("Lab", verbose_name="Lab", on_delete=models.CASCADE)
     contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
+
+    objects = ChemicalQuerySet.as_manager()
 
     class Meta:
         verbose_name = "Chemical"

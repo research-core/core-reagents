@@ -1,25 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.encoding import force_text
 
+from .primer_queryset import PrimerQuerySet
 
-
-
-class Reagent(models.Model):
-    reagent_id = models.AutoField("Reagent id", primary_key=True)
-    reagent_name = models.CharField("Name", max_length=50, unique=True)
-    reagent_reagent = models.CharField("Reagent", max_length=50)
-    reagent_purpose = models.TextField("Purpose", null=True,blank=True)
-    supplier = models.ForeignKey("Supplier", verbose_name="Supplier", on_delete=models.CASCADE)
+class Primer(models.Model):
+    primer_id = models.AutoField("Primer id", primary_key=True)
+    primer_name = models.CharField("Name", max_length=50)
+    primer_sequence = models.CharField("Sequence (5'-3')", max_length=100)
+    primer_purpose = models.TextField("Purpose")
+    primer_melting_temp = models.IntegerField("Melting Temperature (C)")
     lab = models.ForeignKey("Lab", verbose_name="Lab", on_delete=models.CASCADE)
+    supplier = models.ForeignKey("Supplier", verbose_name="Supplier", on_delete=models.CASCADE)
+    contact = models.CharField("Person of contact", max_length=100, null=True,blank=True)
 
-    
-    def __str__(self): return str(self.reagent_name)
-
+    objects = PrimerQuerySet.as_manager()
 
     class Meta:
-        verbose_name = "Reagent"
-        verbose_name_plural = "Reagents"
+        verbose_name = "Primer"
+        verbose_name_plural = "Primers"
+        unique_together = ('primer_name', 'primer_sequence', 'supplier', 'lab',)
 
     def ShowHideIf(self, checkingField, rules):
         values, listOfFields = rules
@@ -45,11 +46,13 @@ class Reagent(models.Model):
         return True
                 
     def is_complete(self):
-        return getattr(self,'reagent_name')!=None and \
-            getattr(self,'reagent_reagent')!=None and \
-            getattr(self,'reagent_purpose')!=None and \
+        return getattr(self,'primer_name')!=None and \
+            getattr(self,'primer_sequence')!=None and \
+            getattr(self,'primer_purpose')!=None and \
+            getattr(self,'primer_melting_temp')!=None and \
+            getattr(self,'lab')!=None and \
             getattr(self,'supplier')!=None and \
-            getattr(self,'lab')!=None
+            getattr(self,'contact')!=None
     is_complete.short_description="Complete"
     is_complete.boolean = True
             

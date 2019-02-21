@@ -6,17 +6,17 @@ from reagents.models import Lab
 class LabAdminApp(ModelAdminWidget):
     
 
-    UID   = 'reagents-Lab-app'.lower()
+    UID   = 'reagents-lab-app'
     MODEL = Lab
     
     TITLE = 'Labs'
 
-    LIST_DISPLAY = ('lab_name',)
+    LIST_DISPLAY = ('lab_name','group')
     
-    SEARCH_FIELDS = ['lab_name__icontains',]
+    SEARCH_FIELDS = ['lab_name__icontains','group__group_name__icontains']
 
 
-    FIELDSETS = ['lab_name']
+    FIELDSETS = ['lab_name', 'group']
     
     ########################################################
     #### ORQUESTRA CONFIGURATION ###########################
