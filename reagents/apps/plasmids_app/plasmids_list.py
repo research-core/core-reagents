@@ -18,9 +18,10 @@ class PlasmidsAdminApp(ModelAdminWidget):
     LIST_DISPLAY = ('plasmid_name','vectortype','plasmid_reference','supplier','lab','contact',)
     LIST_FILTER = ('plasmid_name','vectortype','plasmid_system','plasmid_flippases','plasmid_attb','plasmid_marker','anti_resistance','growthstrain','supplier','lab',)
     SEARCH_FIELDS = [
-        'plasmid_id','plasmid_name__icontains',
-        'plasmid_mcs','plasmid_sc_enzymes__icontains',
-        'plasmid_promoter','plasmid_transgene__icontains',
+        'plasmid_name__icontains',
+        'plasmid_sc_enzymes__icontains',
+        'plasmid_promoter__icontains',
+        'plasmid_transgene__icontains',
         'plasmid_fluorchrome__icontains',
         'plasmid_seq_primers__icontains',
         'plasmid_sequence__icontains',
