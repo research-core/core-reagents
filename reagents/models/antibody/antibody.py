@@ -30,47 +30,4 @@ class Antibody(models.Model):
 
     def __str__(self): return force_text(self.antibody_name)
 
-
-    def ShowHideIf(self, checkingField, rules):
-        values, listOfFields = rules
-        values = values.split(';')
-        if str(self.__dict__[checkingField]) in values:
-            for field in listOfFields:
-                if not self.__dict__[checkingField]!=None: return False
-        return True
-                
-    def ShowHideIfManyToMany(self, checkingField, rules):
-        values, listOfFields = rules
-        values = values.split(';')
-        
-        selected = getattr(self,checkingField).all()
-        active = False
-        for v in selected:
-            if v in values: 
-                active=True
-                break
-        if active:
-            for field in listOfFields:
-                if self.__dict__[checkingField]==None: return False
-        return True
-                
-    def is_complete(self):
-        return getattr(self,'antibody_name')!=None and \
-            getattr(self,'antibody_target')!=None and \
-            getattr(self,'antibody_prim_sec')!=None and \
-            getattr(self,'antibody_conjuged2')!=None and \
-            getattr(self,'antibody_reactivity')!=None and \
-            getattr(self,'antibody_description')!=None and \
-            getattr(self,'antibody_source')!=None and \
-            getattr(self,'antibody_ig_class')!=None and \
-            getattr(self,'antibody_applications')!=None and \
-            getattr(self,'antibody_stock_concentration')!=None and \
-            getattr(self,'antibody_working_concentration')!=None and \
-            getattr(self,'antibody_reference')!=None and \
-            getattr(self,'supplier')!=None and \
-            getattr(self,'lab')!=None and \
-            getattr(self,'contact')!=None and \
-            getattr(self,'antibody_notes')!=None
-    is_complete.short_description="Complete"
-    is_complete.boolean = True
             

@@ -9,4 +9,6 @@ from .chemical.chemical     import Chemical
 from .enzyme.enzyme         import Enzyme
 from .plasmids.plasmids     import Plasmids
 from .primer.primer         import Primer
+from .virus.virus     		import Virus
+from .virus_type            import VirusType
 from .reagent.reagent       import Reagent

@@ -10,3 +10,5 @@ from .primer_app import PrimerAdminApp
 from .reagent_app import ReagentAdminApp
 from .supplier_app import SupplierAdminApp
 from .vectortype_app import VectorTypeAdminApp
+from .virus_app.virus_list import VirusAdminApp
+from .virustype_app import VirusTypeAdminApp

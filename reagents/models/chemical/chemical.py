@@ -22,39 +22,3 @@ class Chemical(models.Model):
         verbose_name = "Chemical"
         verbose_name_plural = "Chemicals"
         unique_together = ('chemical_name', 'chemical_reference', 'supplier', 'lab',)
-
-
-    def ShowHideIf(self, checkingField, rules):
-        values, listOfFields = rules
-        values = values.split(';')
-        if str(self.__dict__[checkingField]) in values:
-            for field in listOfFields:
-                if not self.__dict__[checkingField]!=None: return False
-        return True
-                
-    def ShowHideIfManyToMany(self, checkingField, rules):
-        values, listOfFields = rules
-        values = values.split(';')
-        
-        selected = getattr(self,checkingField).all()
-        active = False
-        for v in selected:
-            if v in values: 
-                active=True
-                break
-        if active:
-            for field in listOfFields:
-                if self.__dict__[checkingField]==None: return False
-        return True
-                
-    def is_complete(self):
-        return getattr(self,'chemical_name')!=None and \
-            getattr(self,'chemical_formula')!=None and \
-            getattr(self,'chemical_purpose')!=None and \
-            getattr(self,'chemical_reference')!=None and \
-            getattr(self,'supplier')!=None and \
-            getattr(self,'lab')!=None and \
-            getattr(self,'contact')!=None
-    is_complete.short_description="Complete"
-    is_complete.boolean = True
-            

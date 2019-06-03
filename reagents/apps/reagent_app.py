@@ -22,7 +22,7 @@ class ReagentAdminApp(BaseWidget):
 
         self.formset = [
             """h3:The reagents database contains information about the diferent reagents available on the Labs, and that can be shared amoung the CR community.""",
-            """You will find here: <br/><ul><li>Antibodies</li><li>Chemicals</li><li>Enzymes</li><li>Plasmids</li><li>Primers</li></ul>"""
+            """You will find here: <br/><ul><li>Antibodies</li><li>Chemicals</li><li>Enzymes</li><li>Plasmids</li><li>Primers</li></ul><li>Virus</li></ul>"""
         ]
     
     
