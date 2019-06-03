@@ -9,7 +9,7 @@ class VirusTypeAdminApp(ModelAdminWidget):
     UID   = 'reagents-VirusType-app'.lower()
     MODEL = VirusType
     
-    TITLE = 'Viruses Types'
+    TITLE = 'Virus Types'
 
     LIST_DISPLAY = ('virustype_name',)
     
