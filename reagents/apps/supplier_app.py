@@ -25,4 +25,4 @@ class SupplierAdminApp(ModelAdminWidget):
     ORQUESTRA_MENU_ORDER = 100
     ORQUESTRA_MENU_ICON  = 'truck brown'
     ########################################################
-    AUTHORIZED_GROUPS = ['superuser']
+    #AUTHORIZED_GROUPS = ['superuser']
