@@ -15,7 +15,7 @@ class ChemicalAdminApp(ModelAdminWidget):
     LIST_ROWS_PER_PAGE = 20
 
     LIST_DISPLAY = ('chemical_name','chemical_formula','chemical_reference','supplier','lab','contact',)
-    LIST_FILTER = ('supplier','lab',)
+    LIST_FILTER = ('supplier','lab', 'chemical_name')
     SEARCH_FIELDS = [
         'chemical_name__icontains',
         'chemical_formula__icontains','chemical_purpose__icontains',
